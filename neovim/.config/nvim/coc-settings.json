@@ -1,0 +1,9 @@
+{
+  "prettier.tabWidth": 4,
+  "prettier.singleQuote": true,
+  "suggest.noselect": false,
+  "suggest.floatEnable": false,
+  "diagnostic.messageTarget": "float",
+  "signature.target": "float",
+  "coc.preferences.hoverTarget": "float"
+}

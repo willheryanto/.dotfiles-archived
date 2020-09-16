@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Author: William Heryanto
+
+# Fuction to show help mesage
+usage() {
+    cat <<END
+Open PR to master branch from other branch.
+
+Usage:
+  openpr
+
+Flags:
+  -h: show the help message
+  -u: open PR to upstream master branch
+END
+}
+
+# Function to handle erros
+error() {
+    echo "Error: $1"
+    exit $2
+} >&2
+
+
+# get the current active branch
+current_branch=$(git branch | sed -e '/^[^*]/d' -e 's/\* //')
+
+# verify to not in master branch
+if [[ $current_branch = master ]]; then
+    error "You're on master branch" 1
+fi
+
+# get the remote repository
+declare remote_repository="origin"
+declare upstream_flag=0
+
+while getopts ":hu" opt; do
+    case $opt in
+        u)
+            remote_repository="upstream"
+            upstream_flag=1
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        \?)
+            error "Unknown option: -${OPTARG}" 2
+            ;;
+    esac
+done
+
+# retrieve repo url
+repository_url=$(git remote get-url $remote_repository | sed -e 's/git@//' -e 's/:/\//' -e 's/.git//')
+
+declare pr_url=""
+if [[ $upstream_flag -eq 1 ]]; then
+    origin_user=$(git remote get-url origin | sed -e 's/git@github.com://' -e 's/\/.*//')
+    pr_url="https://$repository_url/compare/master...$origin_user:$current_branch"
+else
+    pr_url="https://$repository_url/compare/master...$current_branch"
+fi
+
+open $pr_url
+
+exit 0
