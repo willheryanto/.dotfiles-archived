@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  #source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -31,27 +24,35 @@ zinit light-mode for \
 export DOTFILES=$HOME/.dotfiles
 export MYZSHCONFIG=$DOTFILES/zsh
 export MYVIMCONFIG=$HOME/.config/nvim/
-export NVM_LAZY_LOAD=true
 export EDITOR=nvim
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
+export NVM_LAZY_LOAD=true
 
 # PATH
 export PATH=$PATH:$DOTFILES/bin # My own bin
+export PATH=$PATH:$HOME/.nvm/versions/node/v14.5.0/bin # trick to boost NVM load time
 export PATH=$PATH:$HOME/.pyenv/bin # pyenv
-export PATH=$PATH:$HOME/.poetry/bin:$PATH # Poetry completion
 export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin # Google Cloud SDK
-export PATH=$PATH:/usr/local/mysql/bin # MySQL
-export PATH="/usr/local/opt/llvm/bin:$PATH" # llvm for c++
+export PATH=$PATH:$GOROOT/bin # Go bin
+export PATH=$PATH:$GOPATH/bin # Go bin
+export PATH=$PATH:/usr/local/Cellar/llvm/11.0.0_1/bin # llvm
+export PATH=$PATH:/usr/local/Cellar/llvm/11.0.0_1/bin # llvm
+export PTPYTHON_CONFIG_HOME=$HOME/.config/ptpython
 
 # Plugin ENV
 export FZF_DEFAULT_COMMAND='rg --files' # Setting rg as the default source for fzf
 
-# For the sake of psycopg2
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
+# PHP
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
+# zlib
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/luajit-openresty/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include -I/usr/local/opt/openssl/include -I/usr/local/opt/luajit-openresty/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
 
 # Plugins
-#zinit ice depth=1
-#zinit light romkatv/powerlevel10k
 zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)' pick'**/starship'
 zinit light starship/starship
 
@@ -60,15 +61,18 @@ zinit wait lucid atload'_zsh_autosuggest_start' light-mode for \
     light-mode zdharma/fast-syntax-highlighting \
                zdharma/history-search-multi-word \
     light-mode rupa/z \
-    light-mode OMZ::plugins/git/git.plugin.zsh \
-    light-mode OMZ::plugins/tmux/tmux.plugin.zsh \
-    light-mode OMZ::plugins/pyenv/pyenv.plugin.zsh \
+    light-mode OMZL::git.zsh \
+    light-mode OMZP::git \
+    light-mode OMZP::tmux \
+    light-mode OMZP::pyenv \
     light-mode lukechilds/zsh-nvm \
-    #light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 
-source $MYZSHCONFIG/aliases.zsh
-source $MYZSHCONFIG/keyremap.zsh
-source $MYZSHCONFIG/xendit.zsh
+files=(
+    $MYZSHCONFIG/aliases.zsh
+    $MYZSHCONFIG/keyremap.zsh
+    $MYZSHCONFIG/xendit.zsh
+)
 
-#To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+for file in $files; do
+    source $file
+done

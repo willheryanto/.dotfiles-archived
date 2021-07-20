@@ -2,64 +2,75 @@
 
 # Author: William Heryanto
 
-# Fuction to show help mesage
+# fuction to show help mesage
 usage() {
     cat <<END
 Open PR to master branch from other branch.
 
 Usage:
-  openpr
+  openpr [option]
 
 Flags:
   -h: show the help message
+  -b: specifying branch argument
   -u: open PR to upstream master branch
 END
 }
 
-# Function to handle erros
+# function to handle erros
 error() {
     echo "Error: $1"
     exit $2
 } >&2
 
-
 # get the current active branch
-current_branch=$(git branch | sed -e '/^[^*]/d' -e 's/\* //')
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+target_branch='integration'
+remote_repository="origin"
+upstream_flag=0
 
-# verify to not in master branch
-if [[ $current_branch = master ]]; then
-    error "You're on master branch" 1
-fi
-
-# get the remote repository
-declare remote_repository="origin"
-declare upstream_flag=0
-
-while getopts ":hu" opt; do
-    case $opt in
-        u)
-            remote_repository="upstream"
-            upstream_flag=1
-            ;;
-        h)
-            usage
-            exit 0
-            ;;
-        \?)
-            error "Unknown option: -${OPTARG}" 2
-            ;;
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+    -b | --branch)
+        target_branch="$2"
+        shift
+        shift
+        ;;
+    -u | --upstream)
+        upstream_flag=1
+        echo 'nice'
+        shift
+        ;;
+    -h | --help)
+        usage
+        shift
+        exit 0
+        ;;
+    *)
+        error "argument not supported" 1
+        ;;
     esac
 done
+
+echo $target_branch $current_branch
+
+# verify to not in master branch
+if [[ $target_branch = $current_branch ]]; then
+    error "The target branch is the same as current branch" 1
+fi
 
 # retrieve repo url
 repository_url=$(git remote get-url $remote_repository | sed -e 's/git@//' -e 's/:/\//' -e 's/.git//')
 
 declare pr_url=""
+
+# handling upstream
 if [[ $upstream_flag -eq 1 ]]; then
     origin_user=$(git remote get-url origin | sed -e 's/git@github.com://' -e 's/\/.*//')
-    pr_url="https://$repository_url/compare/master...$origin_user:$current_branch"
+    pr_url="https://$repository_url/compare/$target_branch...$origin_user:$current_branch"
 else
-    pr_url="https://$repository_url/compare/master...$current_branch"
+    pr_url="https://$repository_url/compare/$target_branch...$current_branch"
 fi
 
 open $pr_url

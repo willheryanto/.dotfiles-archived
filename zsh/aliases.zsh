@@ -5,6 +5,7 @@ alias ls="exa"
 
 alias zshrc="cd $DOTFILES; vim .zshrc"
 alias vimrc="cd $DOTFILES/neovim/.config/nvim; vim init.vim"
+alias luarc="cd $DOTFILES/neovim/.config/nvim; vim init.lua"
 
 alias copy="tr -d '\n' | pbcopy"
 alias pwdc="pwd | tr -d '\n' | pbcopy"
@@ -14,26 +15,29 @@ alias "...."="cd ../../.."
 alias -- -="cd -"
 
 alias lg="lazygit"
+alias jn="jupyter notebook"
+alias o="open"
+alias t="touch"
+alias db="defaultbrowser"
 
 # Languages shortcut
 alias n="node"
-alias d="deno"
 alias p="python"
 alias nv="node -v"
-
-# Mongohacker
-alias mhon='mv ~/.mongorc.js.backup ~/.mongorc.js'
-alias mhoff='mv ~/.mongorc.js ~/.mongorc.js.backup'
+alias ns="nvm exec 12.18.4"
 
 # ZSH files shortcut
 alias aliasrc="cd $DOTFILES/zsh; vim aliases.zsh"
 
-# pgcli
-alias pgcli="pgcli --auto-vertical-output"
-
 # Turn off accent typing
-# defaults write -g ApplePressAndHoldEnabled -bool false
+#defaults write -g ApplePressAndHoldEnabled -bool false
 
+# Random
+alias bm="benchmark"
+alias ez="exec zsh"
+
+
+# Utils
 cdc() {
   cd "$(pbpaste)"
 }
@@ -48,24 +52,25 @@ benchmark() {
   for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
 }
 
-## FZF FUNCTIONS ##
+# FZF functions
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" --type f .
+}
 
-# fo [FUZZY PATTERN] - Open the selected file with the default editor
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
+## Open file fuzzy
 fo() {
   local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  IFS=$'\n'
+  files=($(_fzf_compgen_path | fzf-tmux --query="$1" --border --info=inline --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# fh [FUZZY PATTERN] - Search in command history
+## Open command history fuzzy
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
-# fbr [FUZZY PATTERN] - Checkout specified branch
-# Include remote branches, sorted by most recent commit and limited to 30
+## Open git branch fuzzy
 fgb() {
   local branches branch
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
