@@ -100,6 +100,17 @@ table.insert(
   }
 )
 
+--table.insert(
+  --gls.left,
+  --{
+    --FileName = {
+      --provider = vim.fn("fugitive#statusline")(),
+      --condition = condition.buffer_not_empty,
+      --highlight = {colors.blue, colors.bg, "bold"}
+    --}
+  --}
+--)
+
 table.insert(
   gls.left,
   {

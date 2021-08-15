@@ -42,18 +42,29 @@ lsp.tsserver.setup {
 }
 
 -- https://github.com/tailwindlabs/tailwindcss-intellisense
-require "lspconfig".tailwindcss.setup {}
+--require "lspconfig".tailwindcss.setup {}
 
 -- https://github.com/hrsh7th/vscode-langservers-extracted
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require "lspconfig".cssls.setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  filetypes = {
+    "css",
+    "svelte"
+  }
 }
 
 -- https://github.com/mattn/efm-langserver
 -- Used only for eslint_d
 local eslint = require "efm/eslint"
+
+local function decode_eslint()
+  local package_json = vim.fn.filereadable("package.json")
+  if package_json == 1 then
+    return vim.fn.json_decode(package_json)["eslintConfig"]
+  end
+end
 
 local function eslint_config_exists()
   local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
@@ -62,11 +73,10 @@ local function eslint_config_exists()
     return true
   end
 
-  local package_json = vim.fn.filereadable("package.json")
-  if package_json == 1 then
-    if vim.fn.json_decode(package_json)["eslintConfig"] then
-      return true
-    end
+  if pcall(decode_eslint) then
+    return true
+  else
+    return false
   end
 
   return false
@@ -116,7 +126,7 @@ else
   print("Unsupported system for sumneko")
 end
 
-local sumneko_root_path = "~/dev/external/repos/lua-language-server"
+local sumneko_root_path = os.getenv("HOME") .. "/dev/external/repos/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
 
 lsp.sumneko_lua.setup(
@@ -185,9 +195,10 @@ lsp.ccls.setup(
 lsp.gopls.setup(
   {
     on_attach = on_attach,
-    cmd = {"gopls", "serve"},
+    cmd = {"gopls"},
     filetypes = {
-      "go"
+      "go",
+      "gomod"
     }
   }
 )
@@ -197,7 +208,32 @@ require "lspconfig".bashls.setup {
   on_attach = on_attach
 }
 
+-- Managed by flutter-tools
 -- https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server/tool/lsp_spec
-require "lspconfig".dartls.setup {
+--require "lspconfig".dartls.setup {
+--on_attach = on_attach
+--}
+
+-- https://github.com/redhat-developer/yaml-language-server
+require "lspconfig".yamlls.setup {
   on_attach = on_attach
 }
+
+-- Managed by rust-tools
+-- https://github.com/rust-analyzer/rust-analyzer
+--require "lspconfig".rust_analyzer.setup {
+--on_attach = on_attach,
+--settings = {
+--["rust-analyzer"] = {
+--assist = {
+--importGranularity = "crate"
+--},
+--cargo = {
+--loadOutDirsFromCheck = true
+--},
+--procMacro = {
+--enable = true
+--}
+--}
+--}
+--}

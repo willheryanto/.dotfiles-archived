@@ -12,7 +12,8 @@ wk.register(
       p = {"<cmd>tabprevious<cr>", ":tabprevious"},
       f = {"<cmd>tabfirst<cr>", ":tabfirst"},
       l = {"<cmd>tablast<cr>", ":tablast"},
-      m = {"<cmd>tabmove", ":tabmove"}
+      m = {"<cmd>tabmove", ":tabmove"},
+      b = {"<cmd>TagbarToggle<cr>", ":TagbarToggle"}
     },
     q = {
       q = {"<cmd>quit!<cr>", "forced quit vim"},
@@ -20,17 +21,16 @@ wk.register(
     },
     w = {"<cmd>w<cr>", ""},
     g = {
-      a = {"<cmd>Git add .<cr>", "add all"},
-      A = {"<cmd>Git add %<cr>", "add current"},
+      a = {"<cmd>Git commit --amend", "git commit --ammend"},
       b = {"<cmd>Git blame<cr>", "blame"},
       B = {"<cmd>Gbrowse<cr>", "browse"},
       c = {"<cmd>Gcommit<cr>", "commit"},
       d = {"<cmd>Gdiff<cr>", "diff"},
       D = {"<cmd>Gdiffsplit!<cr>", "diff split"},
       G = {"<cmd>Gstatus<cr>", "status"},
-      l = {"<cmd>Git log<cr>", "log"},
-      p = {"<cmd>Git push<cr>", "push"},
-      P = {"<cmd>Git pull<cr>", "pull"},
+      l = {"<cmd>Gclog %<cr>", "log"},
+      --p = {"<cmd>Git push<cr>", "push"},
+      --P = {"<cmd>Git pull<cr>", "pull"},
       r = {"<cmd>GRemove<cr>", "remove"},
       v = {"<cmd>GV<cr>", "view commits"},
       V = {"<cmd>GV!<cr>", "view buffer commits"},

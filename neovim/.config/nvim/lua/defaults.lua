@@ -37,12 +37,17 @@ opt("w", "wrap", false)
 
 vim.cmd(
   [[
-colorscheme night-owl
+syntax enable
+filetype plugin indent on
+colorscheme nightfly
+set t_ZH=^[[3m
+set t_ZR=^[[23m
 au VimEnter * hi! Normal ctermbg=NONE guibg=NONE
 au VimEnter * hi! LineNr ctermbg=NONE guibg=NONE guifg=#4b6479
 au VimEnter * hi! CursorLineNr guifg=#C5E4FD
 au VimEnter * hi! EndOfBuffer ctermbg=NONE guibg=NONE
 autocmd BufWritePost plugins.lua PackerCompile
+autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
 ]]
 )
 

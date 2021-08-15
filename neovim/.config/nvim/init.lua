@@ -1,24 +1,31 @@
--- Load all plugins and basic settings
-require "plugins"
-
+---- Defaults
 vim.g.mapleader = " "
+require "defaults"
+require "default-mappings"
 
-require "settings"
-require "mappings"
-
-require "file-icons"
+---- Load all plugins
+require "plugins"
 require "plugin_settings.which-key"
 require "plugin_settings.nvim-tree"
-require "statusline"
-require("colorizer").setup()
-
---require "plugin_settings.indent-blankline"
+require "plugin_settings.nvim.galaxyline"
+require "plugin_settings.nvim.indent-blankline"
+require "plugin_settings.nvim-colorizer"
 require "plugin_settings.treesitter-nvim"
-require "plugin_settings.telescope"
-require("nvim-autopairs").setup()
+require "plugin_settings.nvim.telescope"
 
 ---- LSP stuff
-require "plugin_settings.nvim-lspinstall"
 require "plugin_settings.nvim-lspconfig"
 require "plugin_settings.nvim-compe"
-require "plugin_settings.formatter-nvim"
+
+---- Code stutff
+require "plugin_settings.ultisnips"
+require "plugin_settings.nvim-autopairs"
+require "plugin_settings.nvim-web-devicons"
+
+---- Code helper
+require "plugin_settings.nvim.formatter"
+require "plugin_settings.nvim.rust-tools"
+require "plugin_settings.nvim.flutter-tools"
+
+---- Misc
+require "plugin_settings.vimtex"

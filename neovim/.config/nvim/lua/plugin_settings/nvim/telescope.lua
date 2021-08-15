@@ -34,26 +34,17 @@ require("telescope").setup {
     use_less = true,
     color_devicons = true,
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-    file_previewer = require "telescope.previewers".vim_buffer_cat.new,
-    grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-    qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
+    --file_previewer = require "telescope.previewers".vim_buffer_cat.new,
+    --grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
+    --qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
     -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
-  },
-  extensions = {
-    media_files = {
-      filetypes = {"png", "webp", "jpg", "jpeg"},
-      find_cmd = "rg" -- find command (defaults to `fd`)
-    }
+    --buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
   }
 }
-
-require("telescope").load_extension("media_files")
 
 -- Mapping
 map = require("utils").map
 
 local opt = {noremap = true, silent = true}
 map("n", "<C-p>", [[:Telescope find_files find_command=fd,--type,f,--hidden,--follow,--exclude,".git".<CR>]], opt)
-map("n", "<C-f>p", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
 map("n", "<leader>rg", [[:Telescope live_grep<CR>]], opt)

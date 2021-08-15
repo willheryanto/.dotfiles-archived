@@ -39,7 +39,6 @@ while [[ $# -gt 0 ]]; do
         ;;
     -u | --upstream)
         upstream_flag=1
-        echo 'nice'
         shift
         ;;
     -h | --help)
