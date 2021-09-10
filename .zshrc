@@ -70,7 +70,6 @@ zinit wait lucid atload'_zsh_autosuggest_start' light-mode for \
 files=(
     $MYZSHCONFIG/aliases.zsh
     $MYZSHCONFIG/keyremap.zsh
-    $MYZSHCONFIG/xendit.zsh
 )
 
 for file in $files; do
