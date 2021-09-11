@@ -1,33 +1,23 @@
+# Editors alises
 alias vim="nvim"
 alias v="nvim"
 alias vi="nvim"
-alias ls="exa"
 
+# cd aliases
 alias zshrc="cd $DOTFILES; vim .zshrc"
 alias vimrc="cd $DOTFILES/neovim/.config/nvim; vim init.vim"
 alias luarc="cd $DOTFILES/neovim/.config/nvim; vim init.lua"
-
-alias copy="tr -d '\n' | pbcopy"
-alias pwdc="pwd | tr -d '\n' | pbcopy"
+alias aliasrc="cd $DOTFILES/zsh; vim aliases.zsh"
 alias ".."="cd .."
 alias "..."="cd ../.."
 alias "...."="cd ../../.."
 alias -- -="cd -"
+alias md="cd $HOME/.dotfiles"
 
-alias lg="lazygit"
-alias jn="jupyter notebook"
-alias o="open"
-alias t="touch"
-alias db="defaultbrowser"
-
-# Languages shortcut
+# PLG aliases
 alias n="node"
 alias p="python"
 alias nv="node -v"
-alias ns="nvm exec 12.18.4"
-
-# ZSH files shortcut
-alias aliasrc="cd $DOTFILES/zsh; vim aliases.zsh"
 
 # Turn off accent typing
 #defaults write -g ApplePressAndHoldEnabled -bool false
@@ -36,8 +26,14 @@ alias aliasrc="cd $DOTFILES/zsh; vim aliases.zsh"
 alias bm="benchmark"
 alias ez="exec zsh"
 
-
 # Utils
+alias o="open"
+alias t="touch"
+alias ls="exa"
+#alias db="defaultbrowser"
+alias copy="tr -d '\n' | pbcopy"
+alias pwdc="pwd | tr -d '\n' | pbcopy"
+
 cdc() {
   cd "$(pbpaste)"
 }
