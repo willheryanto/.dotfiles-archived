@@ -66,7 +66,6 @@ nvm install 16.9.0
 npm i -g neovim typescript typescript-language-server @fsouza/prettierd pyright eslint_d bash-language-server yarn
 yarn global add yaml-language-server
 
-
 ## Go
 check_brew go
 check_cmd shfmt GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
@@ -140,15 +139,15 @@ cd $HOME/dev/repos/ext
 git clone https://github.com/latex-lsp/texlab
 cd texlab && cargo build --release
 
-# Neovim execute
-nvim -c :PackerInstall
-
 ## C++
 check_brew gcc
 cd $HOME/dev/repos/ext
 git clone --depth=1 --recursive https://github.com/MaskRay/ccls
 cd ccls
-LLVM_VERSION=`brew list --versions llvm  | awk '{print $2}'`
+LLVM_VERSION=$(brew list --versions llvm | awk '{print $2}')
 cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local/Cellar/llvm/$LLVM_VERSION/lib/cmake
 cmake --build Release
 cp Release/ccls /usr/local/bin/
+
+# Neovim execute
+nvim -c :PackerInstall
