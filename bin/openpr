@@ -4,7 +4,7 @@
 
 # fuction to show help mesage
 usage() {
-    cat <<END
+	cat <<END
 Open PR to master branch from other branch.
 
 Usage:
@@ -19,8 +19,8 @@ END
 
 # function to handle erros
 error() {
-    echo "Error: $1"
-    exit $2
+	echo "Error: $1"
+	exit $2
 } >&2
 
 # get the current active branch
@@ -30,33 +30,33 @@ remote_repository="origin"
 upstream_flag=0
 
 while [[ $# -gt 0 ]]; do
-    key="$1"
-    case $key in
-    -b | --branch)
-        target_branch="$2"
-        shift
-        shift
-        ;;
-    -u | --upstream)
-        upstream_flag=1
-        shift
-        ;;
-    -h | --help)
-        usage
-        shift
-        exit 0
-        ;;
-    *)
-        error "argument not supported" 1
-        ;;
-    esac
+	key="$1"
+	case $key in
+	-b | --branch)
+		target_branch="$2"
+		shift
+		shift
+		;;
+	-u | --upstream)
+		upstream_flag=1
+		shift
+		;;
+	-h | --help)
+		usage
+		shift
+		exit 0
+		;;
+	*)
+		error "argument not supported" 1
+		;;
+	esac
 done
 
 echo $target_branch $current_branch
 
 # verify to not in master branch
 if [[ $target_branch = $current_branch ]]; then
-    error "The target branch is the same as current branch" 1
+	error "The target branch is the same as current branch" 1
 fi
 
 # retrieve repo url
@@ -66,10 +66,10 @@ declare pr_url=""
 
 # handling upstream
 if [[ $upstream_flag -eq 1 ]]; then
-    origin_user=$(git remote get-url origin | sed -e 's/git@github.com://' -e 's/\/.*//')
-    pr_url="https://$repository_url/compare/$target_branch...$origin_user:$current_branch"
+	origin_user=$(git remote get-url origin | sed -e 's/git@github.com://' -e 's/\/.*//')
+	pr_url="https://$repository_url/compare/$target_branch...$origin_user:$current_branch"
 else
-    pr_url="https://$repository_url/compare/$target_branch...$current_branch"
+	pr_url="https://$repository_url/compare/$target_branch...$current_branch"
 fi
 
 open $pr_url

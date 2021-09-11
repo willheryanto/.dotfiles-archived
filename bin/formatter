@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 
 import argparse
-from sys import stdin
 from subprocess import run
+from sys import stdin
 
 parser = argparse.ArgumentParser(description="String formatter for query")
-parser.add_argument('-t', '--type', action='store',
-                    choices=['sql', 'mongo', 'mongo-id'], default='sql', metavar="", help='Choose between sql, mongo, and mongo-id')
+parser.add_argument(
+    "-t",
+    "--type",
+    action="store",
+    choices=["sql", "mongo", "mongo-id"],
+    default="sql",
+    metavar="",
+    help="Choose between sql, mongo, and mongo-id",
+)
 args = parser.parse_args()
 
 
@@ -16,20 +23,21 @@ def get_input():
 
 
 def copy(data):
-    run('pbcopy', universal_newlines=True, input=data)
+    run("pbcopy", universal_newlines=True, input=data)
 
 
 def main():
     input = get_input()
 
-    if args.type == 'sql':
+    output = None
+    if args.type == "sql":
         output = ", ".join(map(lambda x: f"'{x}'", input))
         output = f"({output})"
-    elif args.type == 'mongo':
+    elif args.type == "mongo":
         output = ", ".join(map(lambda x: f"'{x}'", input))
         output = f"[{output}]"
         output = "{ $in: " + output + " }"
-    elif args.type == 'mongo-id':
+    elif args.type == "mongo-id":
         output = ", ".join(map(lambda x: f"ObjectId('{x}')", input))
         output = f"[{output}]"
         output = "{ $in: " + output + " }"

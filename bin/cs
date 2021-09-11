@@ -1,0 +1,23 @@
+#!/bin/bash
+
+filename="${@: -1}"
+
+if command -v $filename &>/dev/null; then
+	echo "$filename is exist"
+	exit 0
+fi
+
+filepath=$HOME/.dotfiles/bin/$filename
+
+echo "#!/bin/bash" >>$filepath
+chmod 744 $filepath
+
+echo "$filepath created"
+
+case $1 in
+-e | --edit)
+	$EDITOR $filepath
+	;;
+*) ;;
+
+esac
