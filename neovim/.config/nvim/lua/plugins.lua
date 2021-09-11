@@ -18,7 +18,7 @@ return require("packer").startup(
     use "rust-lang/rust.vim"
     use "simrat39/rust-tools.nvim"
     use "fatih/vim-go"
-    use "akinsho/flutter-tools.nvim"
+    --use "akinsho/flutter-tools.nvim"
 
     -- Helpers
     use "christoomey/vim-tmux-navigator"
@@ -37,7 +37,6 @@ return require("packer").startup(
     use "ryanoasis/vim-devicons"
     use {
       "nvim-telescope/telescope.nvim",
-      branch = "async_v2",
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
     }
     use "preservim/nerdcommenter"
@@ -47,11 +46,11 @@ return require("packer").startup(
     use "tpope/vim-rhubarb"
 
     -- Themes/UI stuffs
-    use "haishanh/night-owl.vim"
+    --use "haishanh/night-owl.vim"
     use "bluz71/vim-moonfly-colors"
-    use "bluz71/vim-nightfly-guicolors"
-    use "sainnhe/everforest"
-    use "arcticicestudio/nord-vim"
+    --use "bluz71/vim-nightfly-guicolors"
+    --use "sainnhe/everforest"
+    --use "arcticicestudio/nord-vim"
     use "glepnir/galaxyline.nvim"
 
     -- Writing

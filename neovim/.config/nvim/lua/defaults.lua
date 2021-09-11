@@ -1,10 +1,8 @@
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
 local function opt(scope, key, value)
-  scopes[scope][key] = value
-  if scope ~= "o" then
-    scopes["o"][key] = value
-  end
+    scopes[scope][key] = value
+    if scope ~= "o" then scopes["o"][key] = value end
 end
 
 local indent = 2
@@ -35,11 +33,9 @@ opt("w", "number", true)
 opt("w", "relativenumber", true)
 opt("w", "wrap", false)
 
-vim.cmd(
-  [[
+vim.cmd([[
 syntax enable
 filetype plugin indent on
-colorscheme nightfly
 set t_ZH=^[[3m
 set t_ZR=^[[23m
 au VimEnter * hi! Normal ctermbg=NONE guibg=NONE
@@ -48,12 +44,9 @@ au VimEnter * hi! CursorLineNr guifg=#C5E4FD
 au VimEnter * hi! EndOfBuffer ctermbg=NONE guibg=NONE
 autocmd BufWritePost plugins.lua PackerCompile
 autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
-]]
-)
+]])
 
-vim.api.nvim_command(
-  [[
+vim.api.nvim_command([[
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-]]
-)
+]])

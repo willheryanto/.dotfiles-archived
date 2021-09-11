@@ -1,5 +1,6 @@
 ---- Defaults
 vim.g.mapleader = " "
+
 require "defaults"
 require "default-mappings"
 
@@ -25,7 +26,10 @@ require "plugin_settings.nvim-web-devicons"
 ---- Code helper
 require "plugin_settings.nvim.formatter"
 require "plugin_settings.nvim.rust-tools"
-require "plugin_settings.nvim.flutter-tools"
+--require "plugin_settings.nvim.flutter-tools"
 
 ---- Misc
 require "plugin_settings.vimtex"
+
+---- Colorscheme
+vim.cmd("colorscheme moonfly")
