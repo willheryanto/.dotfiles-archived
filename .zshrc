@@ -4,7 +4,8 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
     command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b" fi
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
@@ -24,13 +25,12 @@ export DOTFILES=$HOME/.dotfiles
 export MYZSHCONFIG=$DOTFILES/zsh
 export MYVIMCONFIG=$HOME/.config/nvim/
 export EDITOR=nvim
-export FZF_DEFAULT_COMMAND='rg --files' # Setting rg as the default source for fzf
+export FZF_DEFAULT_COMMAND="rg --files" # Setting rg as the default source for fzf
 
 # Flags
 export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/luajit-openresty/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include -I/usr/local/opt/openssl/include -I/usr/local/opt/luajit-openresty/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
-
 
 # Plugins
 zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)' pick'**/starship'
@@ -44,7 +44,7 @@ zinit wait lucid atload'_zsh_autosuggest_start' light-mode for \
     light-mode OMZL::git.zsh \
     light-mode OMZP::git \
     light-mode OMZP::tmux \
-    light-mode lukechilds/zsh-nvm \
+    light-mode lukechilds/zsh-nvm
 
 files=(
     $MYZSHCONFIG/plgs/node.zsh
@@ -55,6 +55,4 @@ files=(
     $MYZSHCONFIG/keyremap.zsh
 )
 
-for file in $files; do
-    source $file
-done
+for file in $files; do source $file; done
