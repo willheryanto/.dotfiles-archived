@@ -36,14 +36,9 @@ require("formatter").setup({
                 return {exe = "lua-format", args = {bufname()}, stdin = true}
             end
         },
-        go = {
+        cpp = {
             function()
-                return {exe = "gofmt", args = {bufname()}, stdin = true}
-            end
-        },
-        yaml = {
-            function()
-                return {exe = "yamllint", args = {bufname()}, stdin = true}
+                return {exe = "clang-format", args = {bufname()}, stdin = true}
             end
         },
         sql = {
@@ -51,9 +46,19 @@ require("formatter").setup({
                 return {exe = "sqlparse", args = {bufname()}, stdin = true}
             end
         },
+        yaml = {
+            function()
+                return {exe = "yamllint", args = {bufname()}, stdin = true}
+            end
+        },
         tex = {
             function()
                 return {exe = "latexindent", args = {bufname()}, stdin = true}
+            end
+        },
+        go = {
+            function()
+                return {exe = "gofmt", args = {bufname()}, stdin = true}
             end
         },
         rust = {
