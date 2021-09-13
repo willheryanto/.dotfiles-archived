@@ -20,4 +20,3 @@ bindkey '^K' kill-line
 
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
-
