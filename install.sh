@@ -56,14 +56,14 @@ check_brew pyenv
 eval "$(pyenv init --path)"
 pyenv install 3.9.7
 pyenv global 3.9.7
-pip install isort black neovim yamllint sqlparse
+pip install isort black neovim yamllint sqlparse jedi-language-server
 
 ## Node
 check_cmd nvm curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install 16.9.0
-npm i -g neovim typescript typescript-language-server @fsouza/prettierd pyright eslint_d bash-language-server yarn env-cmd
+npm i -g neovim typescript typescript-language-server @fsouza/prettierd eslint_d bash-language-server yarn env-cmd
 yarn global add yaml-language-server
 
 ## Go
@@ -84,6 +84,8 @@ check_brew exa
 check_brew xsv
 check_brew jq
 check_brew ctags
+check_brew pdm
+check_brew pipx
 check_brew -c rectangle
 check_brew -c alfred
 

@@ -132,8 +132,8 @@ lsp.sumneko_lua.setup({
     }
 })
 
--- https://github.com/Microsoft/pyright
-lsp.pyright.setup({on_attach = on_attach, filetypes = {"python"}})
+-- https://github.com/pappasam/jedi-language-server
+lsp.jedi_language_server.setup({on_attach = on_attach, filetypes = {"python"}})
 
 -- https://github.com/MaskRay/ccls
 lsp.ccls.setup({
