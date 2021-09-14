@@ -48,7 +48,7 @@ require("formatter").setup({
         },
         markdown = {
             function()
-                return {exe = "remark", args = {bufname()}, stdin = true}
+                return {exe = "prettier", args = {bufname()}, stdin = true}
             end
         },
         yaml = {
