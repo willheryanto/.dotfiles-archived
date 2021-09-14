@@ -46,6 +46,11 @@ require("formatter").setup({
                 return {exe = "sqlparse", args = {bufname()}, stdin = true}
             end
         },
+        markdown = {
+            function()
+                return {exe = "remark", args = {bufname()}, stdin = true}
+            end
+        },
         yaml = {
             function()
                 return {exe = "yamllint", args = {bufname()}, stdin = true}
