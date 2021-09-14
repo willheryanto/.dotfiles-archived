@@ -52,6 +52,8 @@ check_brew zinit
 # Programming languages
 
 ## Python
+check_brew xz
+check_brew readline
 check_brew pyenv
 eval "$(pyenv init --path)"
 pyenv install 3.9.7
