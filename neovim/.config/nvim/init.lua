@@ -16,7 +16,8 @@ require "plugin_settings.nvim.telescope"
 
 ---- LSP stuff
 require "plugin_settings.nvim-lspconfig"
-require "plugin_settings.nvim-compe"
+--require "plugin_settings.nvim-compe"
+require "plugin_settings.nvim-cmp"
 
 ---- Code stutff
 require "plugin_settings.ultisnips"
