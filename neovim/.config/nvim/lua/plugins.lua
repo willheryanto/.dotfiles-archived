@@ -11,10 +11,10 @@ return require("packer").startup(function(use)
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
-    use "SirVer/ultisnips"
+    use "hrsh7th/vim-vsnip"
     use "honza/vim-snippets"
     use "mattn/emmet-vim"
-    --use "hrsh7th/vim-vsnip"
+    --use "SirVer/ultisnips"
     --use "hrsh7th/nvim-compe"
 
     -- Specific code helper
