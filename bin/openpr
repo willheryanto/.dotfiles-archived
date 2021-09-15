@@ -25,7 +25,7 @@ error() {
 
 # get the current active branch
 current_branch=$(git rev-parse --abbrev-ref HEAD)
-target_branch='integration'
+target_branch='master'
 remote_repository="origin"
 upstream_flag=0
 
