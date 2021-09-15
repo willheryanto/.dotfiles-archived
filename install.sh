@@ -67,6 +67,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm install 16.9.0
 npm i -g neovim typescript typescript-language-server @fsouza/prettierd eslint_d bash-language-server yarn env-cmd
 yarn global add yaml-language-server
+check_brew efm-langserver
 
 ## Go
 check_brew go
