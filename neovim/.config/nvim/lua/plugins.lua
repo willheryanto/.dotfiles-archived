@@ -12,10 +12,13 @@ return require("packer").startup(function(use)
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/vim-vsnip"
-    use "honza/vim-snippets"
+    use "hrsh7th/cmp-vsnip"
     use "mattn/emmet-vim"
+    use "rafamadriz/friendly-snippets"
+    --use "honza/vim-snippets"
     --use "SirVer/ultisnips"
     --use "hrsh7th/nvim-compe"
+    --use "ms-jpq/coq_nvim"
 
     -- Specific code helper
     use "rust-lang/rust.vim"

@@ -132,6 +132,13 @@ lsp.sumneko_lua.setup({
     }
 })
 
+-- pyrighj
+-- lsp.pyright.setup({
+-- cmd = {"pyright-langserver", "--stdio"},
+-- on_attach = on_attach,
+-- filetypes = {"python"}
+-- })
+
 -- https://github.com/pappasam/jedi-language-server
 lsp.jedi_language_server.setup({on_attach = on_attach, filetypes = {"python"}})
 
