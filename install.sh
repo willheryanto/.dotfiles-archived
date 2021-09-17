@@ -120,9 +120,9 @@ ln -v .zshrc $HOME/.zshrc
 ## Lua
 check_brew ninja
 mkdir $HOME/dev $HOME/dev/repos $HOME/dev/repos/ext
-cd $HOME/dev/repos/ext
 
 ### https://github.com/Koihik/LuaFormatter
+cd $HOME/dev/repos/ext
 git clone --recurse-submodules https://github.com/Koihik/LuaFormatter.git
 cd LuaFormatter
 cmake .
@@ -132,6 +132,7 @@ cp lua-formatter $HOME/.dotfiles/bin/
 
 ### https://github.com/sumneko/lua-language-server
 ### The LSP execute from this folder directly
+cd $HOME/dev/repos/ext
 git clone https://github.com/sumneko/lua-language-server
 cd lua-language-server
 git submodule update --init --recursive
@@ -158,3 +159,13 @@ cp Release/ccls /usr/local/bin/
 
 # Neovim execute
 nvim -c :PackerInstall
+
+# Databases
+brew tap mongodb/brew
+brew install mongodb-community@5.0
+brew services start mongodb/brew/mongodb-community
+
+check_brew postgresql
+brew services start postgresql
+
+check_brew -c dbeaver-community
