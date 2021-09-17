@@ -132,15 +132,88 @@ lsp.sumneko_lua.setup({
     }
 })
 
--- pyrighj
+-- pyright
 -- lsp.pyright.setup({
 -- cmd = {"pyright-langserver", "--stdio"},
 -- on_attach = on_attach,
--- filetypes = {"python"}
+-- filetypes = {"python"},
+-- settings = {
+-- python = {
+-- analysis = {
+-- extraPaths = {
+-- vim.fn.getcwd() .. "/__pypackages__/3.9/lib",
+-- vim.fn.getcwd() .. "/__pypackages__/3.9/bin"
+-- }
+-- }
+-- }
+-- }
 -- })
 
 -- https://github.com/pappasam/jedi-language-server
-lsp.jedi_language_server.setup({on_attach = on_attach, filetypes = {"python"}})
+lsp.jedi_language_server.setup({
+    on_attach = on_attach,
+    init_options = {
+        workspace = {
+            extraPaths = {
+                vim.fn.getcwd() .. "/__pypackages__/3.9/lib",
+                vim.fn.getcwd() .. "/__pypackages__/3.9/bin"
+            }
+        }
+    },
+    filetypes = {"python"}
+})
+
+lsp.diagnosticls.setup({
+    filetypes = {"python"},
+    init_options = {
+        filetypes = {python = {"flake8", "dmypy"}},
+        linters = {
+            flake8 = {
+                debounce = 100,
+                sourceName = "flake8",
+                command = "flake8",
+                args = {
+                    "--format", "%(row)d:%(col)d:%(code)s:%(code)s: %(text)s",
+                    "%file"
+                },
+                formatPattern = {
+                    "^(\\d+):(\\d+):(\\w+):(\\w).+: (.*)$",
+                    {
+                        line = 1,
+                        column = 2,
+                        message = {"[", 3, "] ", 5},
+                        security = 4
+                    }
+                },
+                securities = {
+                    E = "error",
+                    W = "warning",
+                    F = "info",
+                    B = "hint"
+                }
+            },
+            dmypy = {
+                debounce = 100,
+                sourceName = "dmypy",
+                command = "dmypy",
+                args = {
+                    "run", "--", "%file", "--show-error-codes",
+                    "--show-column-numbers", "--ignore-missing-imports"
+                },
+                formatPattern = {
+                    "^(.*):(\\d+):(\\d+): (\\w+): (.*) \\[(.*)\\]$",
+                    {
+                        line = 2,
+                        columm = 3,
+                        message = {"[", 6, "] ", 5},
+                        security = 4
+                    }
+                },
+                securities = {error = "error", note = "info"}
+            }
+        }
+    }
+})
 
 -- https://github.com/MaskRay/ccls
 lsp.ccls.setup({

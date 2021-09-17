@@ -65,7 +65,7 @@ check_cmd nvm curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/inst
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install 16.9.0
-npm i -g neovim typescript typescript-language-server @fsouza/prettierd eslint_d bash-language-server yarn env-cmd
+npm i -g neovim typescript typescript-language-server @fsouza/prettierd eslint_d bash-language-server yarn env-cmd diagnostic-languageserver
 yarn global add yaml-language-server
 check_brew efm-langserver
 
