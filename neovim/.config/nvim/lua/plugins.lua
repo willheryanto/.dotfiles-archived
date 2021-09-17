@@ -15,10 +15,6 @@ return require("packer").startup(function(use)
     use "hrsh7th/cmp-vsnip"
     use "mattn/emmet-vim"
     use "rafamadriz/friendly-snippets"
-    --use "honza/vim-snippets"
-    --use "SirVer/ultisnips"
-    --use "hrsh7th/nvim-compe"
-    --use "ms-jpq/coq_nvim"
 
     -- Specific code helper
     use "rust-lang/rust.vim"
@@ -52,11 +48,7 @@ return require("packer").startup(function(use)
     use "tpope/vim-rhubarb"
 
     -- Themes/UI stuffs
-    -- use "haishanh/night-owl.vim"
     use "bluz71/vim-moonfly-colors"
-    -- use "bluz71/vim-nightfly-guicolors"
-    -- use "sainnhe/everforest"
-    -- use "arcticicestudio/nord-vim"
     use "glepnir/galaxyline.nvim"
 
     -- Writing
