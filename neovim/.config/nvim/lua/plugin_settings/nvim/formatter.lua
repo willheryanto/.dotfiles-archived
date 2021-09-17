@@ -11,7 +11,7 @@ end
 local function custom_isort_black()
     return {
         exe = "isort",
-        args = {bufname(), "-d", "--profile black", "|", "black", "-q", "-"},
+        args = {bufname(), "-d", "--profile", "black", "|", "black", "-q", "-"},
         stdin = true
     }
 end
