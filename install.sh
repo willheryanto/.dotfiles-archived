@@ -116,10 +116,10 @@ rm $HOME/.zshrc
 ln -v .zshrc $HOME/.zshrc
 
 # Programming languages helper #2
+mkdir $HOME/dev $HOME/dev/repos $HOME/dev/repos/ext $HOME/dev/repos/ext/language-servers
 
 ## Lua
 check_brew ninja
-mkdir $HOME/dev $HOME/dev/repos $HOME/dev/repos/ext
 
 ### https://github.com/Koihik/LuaFormatter
 cd $HOME/dev/repos/ext
@@ -132,7 +132,7 @@ cp lua-formatter $HOME/.dotfiles/bin/
 
 ### https://github.com/sumneko/lua-language-server
 ### The LSP execute from this folder directly
-cd $HOME/dev/repos/ext
+cd $HOME/dev/repos/ext/language-servers
 git clone https://github.com/sumneko/lua-language-server
 cd lua-language-server
 git submodule update --init --recursive
@@ -143,7 +143,7 @@ cd ../..
 
 ## Latex
 ### The LSP execute from this folder directly
-cd $HOME/dev/repos/ext
+cd $HOME/dev/repos/ext/language-servers
 git clone https://github.com/latex-lsp/texlab
 cd texlab && cargo build --release
 
