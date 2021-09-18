@@ -58,7 +58,7 @@ check_brew pyenv
 eval "$(pyenv init --path)"
 pyenv install 3.9.7
 pyenv global 3.9.7
-pip install isort black neovim yamllint sqlparse jedi-language-server
+pip install isort black neovim yamllint sqlparse jedi-language-server jupyterlab jupyterlab_vim
 
 ## Node
 check_cmd nvm curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
@@ -162,7 +162,7 @@ nvim -c :PackerInstall
 
 # Databases
 brew tap mongodb/brew
-brew install mongodb-community@5.0
+check_brew mongodb-community@5.0
 brew services start mongodb/brew/mongodb-community
 
 check_brew postgresql
