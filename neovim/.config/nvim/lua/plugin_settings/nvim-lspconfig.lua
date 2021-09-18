@@ -215,11 +215,9 @@ lsp.diagnosticls.setup({
     }
 })
 
--- https://github.com/MaskRay/ccls
-lsp.ccls.setup({
+-- https://clangd.llvm.org/installation.html
+lsp.clangd.setup({
     on_attach = on_attach,
-    filetypes = {"c", "cpp"},
-    init_options = {cache = {directory = ".ccls-cache"}}
 })
 
 -- https://github.com/latex-lsp/texlab
