@@ -193,13 +193,15 @@ lsp.diagnosticls.setup({
                 }
             },
             dmypy = {
+                rootPatterns = {".git/"},
                 debounce = 100,
                 sourceName = "dmypy",
                 command = "dmypy",
-                args = {
-                    "run", "--", "%file", "--show-error-codes",
-                    "--show-column-numbers", "--ignore-missing-imports"
-                },
+                -- args = {
+                -- "run", "--", "%file", "--show-error-codes",
+                -- "--show-column-numbers", "--ignore-missing-imports"
+                -- },
+                args = {"run", "--", "%file"},
                 formatPattern = {
                     "^(.*):(\\d+):(\\d+): (\\w+): (.*) \\[(.*)\\]$",
                     {
@@ -216,9 +218,7 @@ lsp.diagnosticls.setup({
 })
 
 -- https://clangd.llvm.org/installation.html
-lsp.clangd.setup({
-    on_attach = on_attach,
-})
+lsp.clangd.setup({on_attach = on_attach})
 
 -- https://github.com/latex-lsp/texlab
 lsp.texlab.setup({

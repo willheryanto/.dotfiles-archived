@@ -83,6 +83,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ## Helpers
 check_brew fzf
 check_brew rg
+check_brew rga
+check_brew poppler
 check_brew fd
 check_brew exa
 check_brew xsv
