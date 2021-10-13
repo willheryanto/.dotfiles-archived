@@ -16,7 +16,7 @@ require "plugin_settings.nvim.telescope"
 
 ---- LSP stuff
 require "plugin_settings.nvim-lspconfig"
---require "plugin_settings.nvim-compe"
+-- require "plugin_settings.nvim-compe"
 require "plugin_settings.nvim-cmp"
 
 ---- Code stutff
@@ -27,7 +27,7 @@ require "plugin_settings.nvim-web-devicons"
 ---- Code helper
 require "plugin_settings.nvim.formatter"
 require "plugin_settings.nvim.rust-tools"
---require "plugin_settings.nvim.flutter-tools"
+-- require "plugin_settings.nvim.flutter-tools"
 
 ---- Misc
 require "plugin_settings.vimtex"

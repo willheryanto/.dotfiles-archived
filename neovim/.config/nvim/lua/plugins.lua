@@ -1,3 +1,5 @@
+local function pconf(plugin) return "require(\"pluginconf." .. plugin .. "\")" end
+
 return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
@@ -34,13 +36,12 @@ return require("packer").startup(function(use)
 
     -- File manager / utils
     use "nvim-treesitter/nvim-treesitter"
-    --use "kyazdani42/nvim-tree.lua"
+    -- use "kyazdani42/nvim-tree.lua"
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require'nvim-tree'.setup {} end
     }
-    --use "kyazdani42/nvim-web-devicons"
     use "ryanoasis/vim-devicons"
     use {
         "nvim-telescope/telescope.nvim",
@@ -65,6 +66,10 @@ return require("packer").startup(function(use)
     use "tpope/vim-unimpaired"
     use "tpope/vim-sensible"
     use "tpope/vim-surround"
+
+    -- Others
+    use {'dccsillag/magma-nvim', run = ':UpdateRemotePlugins'}
+
 end, {
     display = {
         border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}

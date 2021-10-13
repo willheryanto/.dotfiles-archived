@@ -1,7 +1,7 @@
 -- following options are the default
 require'nvim-tree'.setup {
     -- disables netrw completely
-    disable_netrw = true,
+    disable_netrw = false,
     -- hijack netrw window on startup
     hijack_netrw = true,
     -- open the tree when running this setup function
@@ -17,11 +17,15 @@ require'nvim-tree'.setup {
     -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
     update_cwd = false,
     -- show lsp diagnostics in the signcolumn
-    lsp_diagnostics = false,
     -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+    -- show lsp diagnostics in the signcolumn
+    diagnostics = {
+        enable = false,
+        icons = {hint = "?", info = "?", warning = "?", error = "?"}
+    },
     update_focused_file = {
         -- enables the feature
-        enable = true,
+        enable = false,
         -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
         -- only relevant when `update_focused_file.enable` is true
         update_cwd = false,
@@ -56,22 +60,18 @@ require'nvim-tree'.setup {
 
 local g = vim.g
 
-g.nvim_tree_side = "left"
-g.nvim_tree_width = 29
 g.nvim_tree_ignore = {
     ".git", ".cache", "node_modules", "__pypackages__", "__pycache__"
 }
+g.nvim_tree_git_ignore = 1
 g.nvim_tree_quit_on_open = 0
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_git_hl = 1
-g.nvim_tree_git_ignore = 1
-g.nvim_tree_root_folder_modifier = ":t"
-g.nvim_tree_allow_resize = 1
 g.nvim_tree_highlight_opened_files = 0
+g.nvim_tree_root_folder_modifier = ":t"
 
 g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
-
 g.nvim_tree_icons = {
     default = " ",
     symlink = " ",

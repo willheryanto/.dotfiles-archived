@@ -164,7 +164,7 @@ lsp.jedi_language_server.setup({
 })
 
 lsp.diagnosticls.setup({
-    filetypes = {"python"},
+    filetypes = {},
     init_options = {
         filetypes = {python = {"flake8", "dmypy"}},
         linters = {
@@ -197,11 +197,11 @@ lsp.diagnosticls.setup({
                 debounce = 100,
                 sourceName = "dmypy",
                 command = "dmypy",
-                -- args = {
-                -- "run", "--", "%file", "--show-error-codes",
-                -- "--show-column-numbers", "--ignore-missing-imports"
-                -- },
-                args = {"run", "--", "%file"},
+                 args = {"run", "--", "%file"},
+                --args = {
+                    --"run", "--", "%file", "--show-error-codes",
+                    --"--show-column-numbers", "--ignore-missing-imports"
+                --},
                 formatPattern = {
                     "^(.*):(\\d+):(\\d+): (\\w+): (.*) \\[(.*)\\]$",
                     {

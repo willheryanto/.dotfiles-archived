@@ -41,5 +41,17 @@ wk.register({
         v = {"<cmd>VimtexView<cr>", "view Latex in PDF viewer"},
         t = {"<cmd>VimtexTocToggle<cr>", "toggle TOC"}
     },
+    r = {
+        --i = {"<cmd>MagmaInit python3<cr>", "magma init"},
+        r = {"<cmd>MagmaEvaluateLine<cr>", "magma evaluate line"},
+        v = {
+            "<cmd>MagmaEvaluateVisual<cr>",
+            "magma evaluate visual",
+            mode = "v"
+        },
+        c = {"<cmd>MagmaReevaluateCell<cr>", "magma reevaluate cell"},
+        d = {"<cmd>MagmaDelete<cr>", "magma delete"},
+        o = {"<cmd>MagmaShowOutput<cr>", "magma showoutput"}
+    },
     z = {c = {"<cmd>LspRestart<cr>", "restart LSP"}}
 }, {prefix = "<leader>"})
