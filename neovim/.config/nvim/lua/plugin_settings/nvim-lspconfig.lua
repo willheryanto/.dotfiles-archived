@@ -133,35 +133,35 @@ lsp.sumneko_lua.setup({
 })
 
 -- pyright
--- lsp.pyright.setup({
--- cmd = {"pyright-langserver", "--stdio"},
+lsp.pyright.setup({
+    cmd = {"pyright-langserver", "--stdio"},
+    on_attach = on_attach,
+    filetypes = {"python"},
+    settings = {
+        python = {
+            analysis = {
+                extraPaths = {
+                    vim.fn.getcwd() .. "/__pypackages__/3.9/lib",
+                    vim.fn.getcwd() .. "/__pypackages__/3.9/bin"
+                }
+            }
+        }
+    }
+})
+
+-- https://github.com/pappasam/jedi-language-server
+-- lsp.jedi_language_server.setup({
 -- on_attach = on_attach,
--- filetypes = {"python"},
--- settings = {
--- python = {
--- analysis = {
+-- init_options = {
+-- workspace = {
 -- extraPaths = {
 -- vim.fn.getcwd() .. "/__pypackages__/3.9/lib",
 -- vim.fn.getcwd() .. "/__pypackages__/3.9/bin"
 -- }
 -- }
--- }
--- }
+-- },
+-- filetypes = {"python"}
 -- })
-
--- https://github.com/pappasam/jedi-language-server
-lsp.jedi_language_server.setup({
-    on_attach = on_attach,
-    init_options = {
-        workspace = {
-            extraPaths = {
-                vim.fn.getcwd() .. "/__pypackages__/3.9/lib",
-                vim.fn.getcwd() .. "/__pypackages__/3.9/bin"
-            }
-        }
-    },
-    filetypes = {"python"}
-})
 
 lsp.diagnosticls.setup({
     filetypes = {},
@@ -197,11 +197,11 @@ lsp.diagnosticls.setup({
                 debounce = 100,
                 sourceName = "dmypy",
                 command = "dmypy",
-                 args = {"run", "--", "%file"},
-                --args = {
-                    --"run", "--", "%file", "--show-error-codes",
-                    --"--show-column-numbers", "--ignore-missing-imports"
-                --},
+                args = {"run", "--", "%file"},
+                -- args = {
+                -- "run", "--", "%file", "--show-error-codes",
+                -- "--show-column-numbers", "--ignore-missing-imports"
+                -- },
                 formatPattern = {
                     "^(.*):(\\d+):(\\d+): (\\w+): (.*) \\[(.*)\\]$",
                     {
@@ -218,7 +218,14 @@ lsp.diagnosticls.setup({
 })
 
 -- https://clangd.llvm.org/installation.html
-lsp.clangd.setup({on_attach = on_attach})
+lsp.ccls.setup({
+    on_attach = on_attach,
+    cmd = {"ccls"}
+    -- root_dir = {""}
+    -- root_dir = function()
+    -- return ".ccls"
+    -- end,
+})
 
 -- https://github.com/latex-lsp/texlab
 lsp.texlab.setup({

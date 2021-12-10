@@ -1,5 +1,3 @@
-local function pconf(plugin) return "require(\"pluginconf." .. plugin .. "\")" end
-
 return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
@@ -17,6 +15,7 @@ return require("packer").startup(function(use)
     use "hrsh7th/cmp-vsnip"
     use "mattn/emmet-vim"
     use "rafamadriz/friendly-snippets"
+    use "github/copilot.vim"
 
     -- Specific code helper
     use "rust-lang/rust.vim"
@@ -36,6 +35,7 @@ return require("packer").startup(function(use)
 
     -- File manager / utils
     use "nvim-treesitter/nvim-treesitter"
+    use 'nvim-treesitter/nvim-tree-docs'
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',

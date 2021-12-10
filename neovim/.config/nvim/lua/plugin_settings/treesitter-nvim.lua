@@ -5,5 +5,6 @@ ts_config.setup {
         "javascript", "html", "css", "bash", "lua", "json", "python", "go",
         "cpp", "rust"
     },
-    highlight = {enable = true, use_languagetree = true}
+    highlight = {enable = true, use_languagetree = true},
+    tree_docs = {enable = true}
 }

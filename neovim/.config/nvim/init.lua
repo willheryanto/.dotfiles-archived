@@ -31,6 +31,7 @@ require "plugin_settings.nvim.rust-tools"
 
 ---- Misc
 require "plugin_settings.vimtex"
+require "plugin_settings.copilot"
 
 ---- Colorscheme
 vim.cmd("colorscheme moonfly")

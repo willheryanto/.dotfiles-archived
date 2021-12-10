@@ -5,7 +5,7 @@ local function opt(scope, key, value)
     if scope ~= "o" then scopes["o"][key] = value end
 end
 
-local indent = 2
+local indent = 4
 
 opt("o", "hidden", true)
 opt("o", "ignorecase", true)
@@ -38,13 +38,20 @@ syntax enable
 filetype plugin indent on
 set t_ZH=^[[3m
 set t_ZR=^[[23m
+
 au VimEnter * hi! Normal ctermbg=NONE guibg=NONE
 au VimEnter * hi! LineNr ctermbg=NONE guibg=NONE guifg=#4b6479
 au VimEnter * hi! CursorLineNr guifg=#C5E4FD
 au VimEnter * hi! EndOfBuffer ctermbg=NONE guibg=NONE
-]])
 
-vim.api.nvim_command([[
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
+
+imap <silent><script><expr> <C-Bslash> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 ]])

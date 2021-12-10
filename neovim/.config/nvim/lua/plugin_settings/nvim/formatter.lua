@@ -3,7 +3,7 @@ local function bufname() return vim.api.nvim_buf_get_name(0) end
 local function prettierd()
     return {
         exe = "prettierd",
-        args = {bufname(), "--single-quote"},
+        args = {bufname()},
         stdin = true
     }
 end
