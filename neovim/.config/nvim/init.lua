@@ -19,7 +19,6 @@ require "plugin_settings.nvim-lspconfig"
 require "plugin_settings.nvim-cmp"
 
 ---- Code stutff
-require "plugin_settings.ultisnips"
 require "plugin_settings.nvim-autopairs"
 require "plugin_settings.nvim-web-devicons"
 
