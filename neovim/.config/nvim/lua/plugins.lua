@@ -21,7 +21,7 @@ return require("packer").startup(function(use)
     use "rust-lang/rust.vim"
     use "simrat39/rust-tools.nvim"
     use "fatih/vim-go"
-    -- use "akinsho/flutter-tools.nvim"
+    use "akinsho/flutter-tools.nvim"
 
     -- Helpers
     use "christoomey/vim-tmux-navigator"
@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
     -- Themes/UI stuffs
     use "bluz71/vim-moonfly-colors"
     use "glepnir/galaxyline.nvim"
+    use "nvim-lualine/lualine.nvim"
 
     -- Writing
     use "lervag/vimtex"

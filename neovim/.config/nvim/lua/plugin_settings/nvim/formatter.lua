@@ -1,11 +1,7 @@
 local function bufname() return vim.api.nvim_buf_get_name(0) end
 
 local function prettierd()
-    return {
-        exe = "prettierd",
-        args = {bufname()},
-        stdin = true
-    }
+    return {exe = "prettierd", args = {bufname()}, stdin = true}
 end
 
 local function custom_isort_black()
@@ -74,6 +70,15 @@ require("formatter").setup({
                     stdin = true
                 }
             end
+        },
+        dart = {
+            function()
+                return {
+                    exe = "dart format",
+                    args = {bufname(), "-o", "show", "|", "head", "-n", "-1",},
+                    stdin = true
+                }
+            end
         }
         -- svelte = {
         -- function()
@@ -86,17 +91,5 @@ require("formatter").setup({
         -- }
         -- end
         -- },
-        -- dart = {
-        -- function()
-        -- return {
-        -- exe = "dart format",
-        -- args = {
-        -- vim.api.nvim_buf_get_name(0), "-o", "show", "|", "sed",
-        -- "\\$d"
-        -- },
-        -- stdin = true
-        -- }
-        -- end
-        -- }
     }
 })
