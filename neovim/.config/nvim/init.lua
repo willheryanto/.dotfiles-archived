@@ -6,10 +6,9 @@ require "default-mappings"
 
 ---- Load all plugins
 require "plugins"
+require "statusline"
 require "plugin_settings.which-key"
 require "plugin_settings.nvim-tree"
-require "plugin_settings.nvim.galaxyline"
---require "statusline"
 require "plugin_settings.nvim.indent-blankline"
 require "plugin_settings.nvim-colorizer"
 require "plugin_settings.treesitter-nvim"

@@ -1,6 +1,8 @@
-local g = vim.g
-g.indent_blankline_char = "▏"
-g.indent_blankline_filetype_exclude = {"help", "terminal"}
-g.indent_blankline_buftype_exclude = {"terminal"}
-g.indent_blankline_show_trailing_blankline_indent = false
-g.indent_blankline_show_first_indent_level = false
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+    show_end_of_line = true,
+    space_char_blankline = " ",
+}

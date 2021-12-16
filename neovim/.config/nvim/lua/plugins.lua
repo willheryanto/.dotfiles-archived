@@ -54,7 +54,6 @@ return require("packer").startup(function(use)
 
     -- Themes/UI stuffs
     use "bluz71/vim-moonfly-colors"
-    use "glepnir/galaxyline.nvim"
     use "nvim-lualine/lualine.nvim"
 
     -- Writing

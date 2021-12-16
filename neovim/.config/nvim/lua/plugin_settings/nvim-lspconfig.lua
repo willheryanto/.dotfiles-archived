@@ -163,59 +163,59 @@ lsp.pyright.setup({
 -- filetypes = {"python"}
 -- })
 
-lsp.diagnosticls.setup({
-    filetypes = {},
-    init_options = {
-        filetypes = {python = {"flake8", "dmypy"}},
-        linters = {
-            flake8 = {
-                debounce = 100,
-                sourceName = "flake8",
-                command = "flake8",
-                args = {
-                    "--format", "%(row)d:%(col)d:%(code)s:%(code)s: %(text)s",
-                    "%file"
-                },
-                formatPattern = {
-                    "^(\\d+):(\\d+):(\\w+):(\\w).+: (.*)$",
-                    {
-                        line = 1,
-                        column = 2,
-                        message = {"[", 3, "] ", 5},
-                        security = 4
-                    }
-                },
-                securities = {
-                    E = "error",
-                    W = "warning",
-                    F = "info",
-                    B = "hint"
-                }
-            },
-            dmypy = {
-                rootPatterns = {".git/"},
-                debounce = 100,
-                sourceName = "dmypy",
-                command = "dmypy",
-                args = {"run", "--", "%file"},
-                -- args = {
-                -- "run", "--", "%file", "--show-error-codes",
-                -- "--show-column-numbers", "--ignore-missing-imports"
-                -- },
-                formatPattern = {
-                    "^(.*):(\\d+):(\\d+): (\\w+): (.*) \\[(.*)\\]$",
-                    {
-                        line = 2,
-                        columm = 3,
-                        message = {"[", 6, "] ", 5},
-                        security = 4
-                    }
-                },
-                securities = {error = "error", note = "info"}
-            }
-        }
-    }
-})
+--lsp.diagnosticls.setup({
+    --filetypes = {},
+    --init_options = {
+        --filetypes = {python = {"flake8", "dmypy"}},
+        --linters = {
+            --flake8 = {
+                --debounce = 100,
+                --sourceName = "flake8",
+                --command = "flake8",
+                --args = {
+                    --"--format", "%(row)d:%(col)d:%(code)s:%(code)s: %(text)s",
+                    --"%file"
+                --},
+                --formatPattern = {
+                    --"^(\\d+):(\\d+):(\\w+):(\\w).+: (.*)$",
+                    --{
+                        --line = 1,
+                        --column = 2,
+                        --message = {"[", 3, "] ", 5},
+                        --security = 4
+                    --}
+                --},
+                --securities = {
+                    --E = "error",
+                    --W = "warning",
+                    --F = "info",
+                    --B = "hint"
+                --}
+            --},
+            --dmypy = {
+                --rootPatterns = {".git/"},
+                --debounce = 100,
+                --sourceName = "dmypy",
+                --command = "dmypy",
+                --args = {"run", "--", "%file"},
+                ---- args = {
+                ---- "run", "--", "%file", "--show-error-codes",
+                ---- "--show-column-numbers", "--ignore-missing-imports"
+                ---- },
+                --formatPattern = {
+                    --"^(.*):(\\d+):(\\d+): (\\w+): (.*) \\[(.*)\\]$",
+                    --{
+                        --line = 2,
+                        --columm = 3,
+                        --message = {"[", 6, "] ", 5},
+                        --security = 4
+                    --}
+                --},
+                --securities = {error = "error", note = "info"}
+            --}
+        --}
+    --}
+--})
 
 -- https://clangd.llvm.org/installation.html
 lsp.ccls.setup({
@@ -248,4 +248,4 @@ lsp.gopls.setup({
 require"lspconfig".bashls.setup {on_attach = on_attach}
 
 -- https://github.com/redhat-developer/yaml-language-server
-require"lspconfig".yamlls.setup {on_attach = on_attach}
+-- require"lspconfig".yamlls.setup {on_attach = on_attach}
