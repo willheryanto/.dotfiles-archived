@@ -1,2 +1,2 @@
-require 'defaults.mappings'
 require 'defaults.settings'
+require 'defaults.mappings'

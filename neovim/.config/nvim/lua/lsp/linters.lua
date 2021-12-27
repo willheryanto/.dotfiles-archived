@@ -5,4 +5,5 @@ return {
     ['shellcheck'] = {},
     ['cppcheck'] = {},
     ['yamllint'] = {},
+    ['golangci_lint'] = {},
 }

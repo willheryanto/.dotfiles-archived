@@ -4,15 +4,13 @@ local wk = require 'which-key'
 wk.register({
     t = {
         t = { '<cmd>tabnew<cr>', ':tabnew' },
-        e = { '<cmd>tabedit', ':tabedit' },
         c = { '<cmd>tabclose<cr>', ':tabclose' },
         o = { '<cmd>tabonly<cr>', ':tabonly' },
         n = { '<cmd>tabnext<cr>', ':tabnext' },
         p = { '<cmd>tabprevious<cr>', ':tabprevious' },
-        f = { '<cmd>tabfirst<cr>', ':tabfirst' },
-        l = { '<cmd>tablast<cr>', ':tablast' },
-        m = { '<cmd>tabmove', ':tabmove' },
-        b = { '<cmd>TagbarToggle<cr>', ':TagbarToggle' },
+        m = { '<cmd>tabmove<cr>', ':tabmove' },
+        k = { '<cmd>TagbarToggle<cr>', ':TagbarToggle' },
+        l = { '<cmd>TroubleToggle<cr>', ':Trouble' },
     },
     q = {
         q = { '<cmd>quit!<cr>', 'forced quit vim' },

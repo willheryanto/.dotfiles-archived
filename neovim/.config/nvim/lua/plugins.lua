@@ -23,6 +23,11 @@ packer.startup(function(use)
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-tree-docs'
 
+    ---- Notifications / Popup
+    use 'folke/trouble.nvim'
+    use 'kosayoda/nvim-lightbulb'
+    use 'weilbith/nvim-code-action-menu'
+
     ---- Navigations
     use {
         'kyazdani42/nvim-tree.lua',
@@ -35,6 +40,7 @@ packer.startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
     }
+    use 'preservim/tagbar'
 
     ---- Git helpers
     use 'tpope/vim-fugitive'
@@ -42,7 +48,6 @@ packer.startup(function(use)
 
     ---- Utils
     use 'preservim/nerdcommenter' -- Comment keybindings
-    use 'preservim/tagbar'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'tpope/vim-surround' -- "Surround" keybindings
 
