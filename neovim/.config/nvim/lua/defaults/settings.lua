@@ -37,7 +37,9 @@ au BufNewFile,BufRead *.sol setf solidity
 au VimEnter * hi! Normal ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
 au VimEnter * hi! MsgArea ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
 au VimEnter * hi! SignColumn ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
-au VimEnter * hi! TabLineFill ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+au VimEnter * hi! TabLine ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+au VimEnter * hi! VertSplit ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+au VimEnter * hi! NvimTreeNormal ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
 
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
