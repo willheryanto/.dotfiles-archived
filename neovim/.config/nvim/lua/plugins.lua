@@ -71,6 +71,7 @@ packer.startup(function(use)
 
     ---- Themes
     use 'bluz71/vim-moonfly-colors'
+    use 'rebelot/kanagawa.nvim'
 
     -- Others
     ---- Writing

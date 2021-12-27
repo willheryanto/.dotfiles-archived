@@ -34,7 +34,9 @@ filetype plugin indent on
 
 au BufNewFile,BufRead *.sol setf solidity
 
-au VimEnter * hi! Normal ctermbg=NONE guibg=NONE
+au VimEnter * hi! Normal ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+au VimEnter * hi! MsgArea ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+au VimEnter * hi! SignColumn ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
 
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None

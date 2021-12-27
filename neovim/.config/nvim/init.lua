@@ -7,4 +7,4 @@ require 'statusline'
 require 'lsp'
 require 'plugin_settings'
 
-vim.cmd 'colorscheme moonfly'
+vim.cmd 'colorscheme kanagawa'
