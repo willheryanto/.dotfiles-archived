@@ -52,8 +52,17 @@ end
 
 -- Diagnostic helpers
 local function builtins(name, settings, context)
-    local source = null_ls.builtins[context][name]
-    return source.with(settings)
+    local source
+    if settings.conditional then
+        return require('null-ls.helpers').conditional(function(utils)
+            source = settings.rules(utils) and null_ls.builtins[context][name]
+                or null_ls.builtins[context][settings.alternative.name]
+            return source.with(settings.alternative.settings)
+        end)
+    else
+        source = null_ls.builtins[context][name]
+        return source.with(settings)
+    end
 end
 
 local enums = {
