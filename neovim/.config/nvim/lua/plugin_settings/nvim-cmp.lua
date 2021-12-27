@@ -1,21 +1,25 @@
 local cmp = require 'cmp'
-cmp.setup({
-    snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
+cmp.setup {
+    snippet = {
+        expand = function(args)
+            vim.fn['vsnip#anonymous'](args.body)
+        end,
+    },
     mapping = {
-        ['<C-p>'] = cmp.mapping.select_prev_item({
-            behavior = cmp.SelectBehavior.Select
-        }),
-        ['<C-n>'] = cmp.mapping.select_next_item({
-            behavior = cmp.SelectBehavior.Select
-        }),
+        ['<C-p>'] = cmp.mapping.select_prev_item {
+            behavior = cmp.SelectBehavior.Select,
+        },
+        ['<C-n>'] = cmp.mapping.select_next_item {
+            behavior = cmp.SelectBehavior.Select,
+        },
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
+        ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
-            select = true
-        }),
+            select = true,
+        },
         ['<Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -29,10 +33,10 @@ cmp.setup({
             else
                 fallback()
             end
-        end
+        end,
     },
-    sources = {{name = 'nvim_lsp'}, {name = 'vsnip'}}
-})
+    sources = { { name = 'nvim_lsp' }, { name = 'vsnip' } },
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
