@@ -7,7 +7,7 @@ return {
             settings = {},
         },
         rules = function(utils)
-            return utils.root_has_file '.eslintrc.*'
+            return utils.root_has_file { '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml' }
         end,
     },
     ['black'] = {},
@@ -16,4 +16,9 @@ return {
     ['gofmt'] = {},
     ['rustfmt'] = {},
     ['dart_format'] = {},
+    ['prettier'] = {
+        filetypes = {
+            'solidity',
+        },
+    },
 }
