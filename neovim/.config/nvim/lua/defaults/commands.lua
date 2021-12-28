@@ -2,6 +2,8 @@
 
 vim.cmd [[
 function! IsWSL()
+  if has("macunix")
+    return 0
   if has("unix")
     let lines = readfile("/proc/version")
     if lines[0] =~ "Microsoft"
@@ -10,6 +12,8 @@ function! IsWSL()
   endif
   return 0
 endfunction
+
+echo IsWSL()
 
 if (IsWSL())
     command! -nargs=1 Browse silent exec '!explorer.exe "<args>"'
