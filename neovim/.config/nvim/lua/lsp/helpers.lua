@@ -51,17 +51,17 @@ M.on_attach_formatting = function(client)
 end
 
 -- Diagnostic helpers
-local function builtins(name, settings, context)
+local function builtins(name, features, context)
     local source
-    if settings.conditional then
+    if features.alternative and features.alternative.enable then
         return require('null-ls.helpers').conditional(function(utils)
-            source = settings.rules(utils) and null_ls.builtins[context][name]
-                or null_ls.builtins[context][settings.alternative.name]
-            return source.with(settings.alternative.settings)
+            source = features.alternative.rules(utils) and null_ls.builtins[context][name].with(features.settings)
+                or null_ls.builtins[context][features.alternative.name].with(features.alternative.settings)
+            return source
         end)
     else
         source = null_ls.builtins[context][name]
-        return source.with(settings)
+        return source.with(features.settings)
     end
 end
 
@@ -73,8 +73,8 @@ local enums = {
 local build_sources = function(linters, formatters)
     local sources = {}
 
-    for linter, settings in pairs(linters) do
-        local source = builtins(linter, settings, enums.diagnostics)
+    for linter, features in pairs(linters) do
+        local source = builtins(linter, features, enums.diagnostics)
         table.insert(sources, source)
     end
 

@@ -57,9 +57,7 @@ local ccls = {
 -- server: texlab
 local texlab = {
     on_attach = helpers.on_attach_navigation,
-    cmd = {
-        os.getenv 'HOME' .. '/repos/ext/language-servers/texlab/target/release/texlab',
-    },
+    cmd = { 'texlab' },
     filetypes = { 'tex' },
 }
 
