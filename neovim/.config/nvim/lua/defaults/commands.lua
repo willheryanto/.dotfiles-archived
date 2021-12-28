@@ -4,7 +4,7 @@ vim.cmd [[
 function! IsWSL()
   if has("macunix")
     return 0
-  if has("unix")
+  elseif has("unix")
     let lines = readfile("/proc/version")
     if lines[0] =~ "Microsoft"
       return 1
