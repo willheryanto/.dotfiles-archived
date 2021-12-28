@@ -43,11 +43,12 @@ local dart_format = { settings = {} }
 
 -- formatter: prettier
 local prettier = {
-    settings = {},
-    filetypes = {
-        'solidity',
-        'markdown',
-        'json',
+    settings = {
+        filetypes = {
+            'solidity',
+            'markdown',
+            'json',
+        },
     },
 }
 
