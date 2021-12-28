@@ -3,16 +3,12 @@ local stylua = { settings = {} }
 
 -- formatter: prettierd
 local prettierd = {
-    settings = {
-        prefer_local = 'node_modules/.bin',
-    },
+    settings = {},
 }
 
 -- formatter: eslint_d
 local eslint_d = {
-    settings = {
-        prefer_local = 'node_modules/.bin',
-    },
+    settings = {},
     alternative = {
         enable = true,
         name = 'prettierd',

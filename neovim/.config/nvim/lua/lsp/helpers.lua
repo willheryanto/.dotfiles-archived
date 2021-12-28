@@ -4,6 +4,7 @@ local null_ls = require 'null-ls'
 local lspconfig = require 'lspconfig'
 
 local map = require('utils').map
+local dump = require('utils').dump
 
 -- Server helpers
 M.get_system_name = function()
@@ -35,7 +36,8 @@ M.on_attach_navigation = function(client)
     map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    --map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    map('n', '<space>ca', '<cmd>CodeActionMenu<CR>', opts)
     map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -53,6 +55,7 @@ end
 -- Diagnostic helpers
 local function builtins(name, features, context)
     local source
+    --print(name, require('utils').dump(features), context)
     if features.alternative and features.alternative.enable then
         return require('null-ls.helpers').conditional(function(utils)
             source = features.alternative.rules(utils) and null_ls.builtins[context][name].with(features.settings)

@@ -26,7 +26,7 @@ packer.startup(function(use)
     ---- Notifications / Popup
     use 'folke/trouble.nvim'
     use 'kosayoda/nvim-lightbulb'
-    use 'weilbith/nvim-code-action-menu'
+    use { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }
 
     ---- Navigations
     use {

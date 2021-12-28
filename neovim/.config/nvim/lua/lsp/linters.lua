@@ -1,8 +1,6 @@
 -- linter: eslint_d
 local eslint_d = {
-    settings = {
-        only_local = 'node_modules/.bin',
-    },
+    settings = {},
 }
 
 -- linter: luacheck
