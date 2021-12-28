@@ -13,8 +13,6 @@ function! IsWSL()
   return 0
 endfunction
 
-echo IsWSL()
-
 if (IsWSL())
     command! -nargs=1 Browse silent exec '!explorer.exe "<args>"'
 endif
