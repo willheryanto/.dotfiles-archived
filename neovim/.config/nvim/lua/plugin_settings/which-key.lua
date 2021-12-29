@@ -8,7 +8,6 @@ wk.register({
         o = { '<cmd>tabonly<cr>', ':tabonly' },
         n = { '<cmd>tabnext<cr>', ':tabnext' },
         p = { '<cmd>tabprevious<cr>', ':tabprevious' },
-        m = { '<cmd>tabmove<cr>', ':tabmove' },
         k = { '<cmd>TagbarToggle<cr>', ':TagbarToggle' },
         l = { '<cmd>TroubleToggle<cr>', ':Trouble' },
     },
