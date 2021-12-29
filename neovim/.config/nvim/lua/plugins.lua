@@ -10,12 +10,16 @@ packer.startup(function(use)
 
     ---- Autocompletion
     use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/cmp-vsnip'
-    use 'github/copilot.vim'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
     use 'mattn/emmet-vim'
+    use 'github/copilot.vim'
+
+    ---- Snippets
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
     use 'rafamadriz/friendly-snippets'
 
     ---- Syntax highlighting
