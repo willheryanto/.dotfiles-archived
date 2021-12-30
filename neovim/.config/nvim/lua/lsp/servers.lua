@@ -102,6 +102,15 @@ local pyright = {
     },
 }
 
+-- server: cssls
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local cssls = {
+    on_attach = helpers.on_attach_navigation,
+    capabilities = capabilities,
+}
+
 return {
     ['tsserver'] = tsserver, -- JS/TS
     ['sumneko_lua'] = sumneKo_lua, -- Lua
@@ -112,5 +121,6 @@ return {
     ['bashls'] = bashls, -- Bash
     ['yamlls'] = yamlls, -- YAML
     ['solidity_ls'] = solidity_ls, -- Solidity
+    ['cssls'] = cssls, -- Bash
     --['pyright'] = pyright, -- Python
 }
