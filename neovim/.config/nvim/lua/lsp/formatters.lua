@@ -1,5 +1,3 @@
-local null_ls = require 'null-ls'
-
 -- formatter: stylua
 local stylua = { settings = {} }
 
@@ -13,10 +11,32 @@ local eslint_d = {
 }
 
 -- formatter: prettierd
+local prettierd_supported_files = {
+    json = true,
+    markdown = true,
+    css = true,
+}
+local prettierd_memo = {}
 local prettierd = {
     settings = {
-        condition = function(utils)
-            return not utils.root_has_file { '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml' }
+        runtime_condition = function(params)
+            if prettierd_memo[params.ft] ~= nil then
+                return prettierd_memo[params.ft]
+            end
+
+            -- Add support directly for not JS/TS/TSX files
+            if prettierd_supported_files[params.ft] ~= nil then
+                prettierd_memo[params.ft] = prettierd_supported_files[params.ft]
+            else
+                -- Only support if eslint is not configured
+                prettierd_memo[params.ft] = not require('lspconfig').util.root_pattern {
+                    '.eslintrc.js',
+                    '.eslintrc.json',
+                    '.eslintrc.yaml',
+                }
+            end
+
+            return prettierd_memo[params.ft]
         end,
     },
 }
@@ -44,8 +64,6 @@ local prettier = {
     settings = {
         filetypes = {
             'solidity',
-            'markdown',
-            'json',
         },
     },
 }
