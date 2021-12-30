@@ -5,4 +5,7 @@ local formatters = require 'lsp.formatters'
 local servers = require 'lsp.servers'
 
 helpers.init_servers(servers)
+require 'plugin_settings.nvim.rust-tools'
+require 'plugin_settings.nvim.flutter-tools'
+
 helpers.init_diagnostics(linters, formatters)

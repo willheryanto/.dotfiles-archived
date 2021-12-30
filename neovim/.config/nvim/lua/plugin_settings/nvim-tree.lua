@@ -1,79 +1,32 @@
--- following options are the default
-require('nvim-tree').setup {
-    -- disables netrw completely
-    disable_netrw = false,
-    -- hijack netrw window on startup
-    hijack_netrw = true,
-    -- open the tree when running this setup function
-    open_on_setup = false,
-    -- will not open on setup if the filetype is in this list
-    ignore_ft_on_setup = {},
-    -- closes neovim automatically when the tree is the last **WINDOW** in the view
-    auto_close = false,
-    -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
-    open_on_tab = false,
-    -- hijack the cursor in the tree to put it at the start of the filename
-    hijack_cursor = true,
-    -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
-    update_cwd = false,
-    -- show lsp diagnostics in the signcolumn
-    -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-    -- show lsp diagnostics in the signcolumn
-    diagnostics = {
-        enable = false,
-        icons = { hint = '?', info = '?', warning = '?', error = '?' },
+local g = vim.g
+
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_git_hl = 1
+g.nvim_tree_root_folder_modifier = ':~'
+
+g.nvim_tree_window_picker_exclude = {
+    filetype = {
+        'notify',
+        'packer',
+        'qf',
     },
-    update_focused_file = {
-        -- enables the feature
-        enable = true,
-        -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
-        -- only relevant when `update_focused_file.enable` is true
-        update_cwd = false,
-        -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
-        -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-        ignore_list = {
-            '.git',
-            '.cache',
-            'node_modules',
-            '__pypackages__',
-            '__pycache__',
-        },
-    },
-    -- configuration options for the system open command (`s` in the tree by default)
-    system_open = {
-        -- the command to run this, leaving nil should work in most cases
-        cmd = nil,
-        -- the command arguments as a list
-        args = {},
-    },
-    filters = { dotfiles = true, custom = {} },
-    view = {
-        -- width of the window, can be either a number (columns) or a string in `%`
-        width = 30,
-        -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
-        side = 'left',
-        -- if true the tree will resize itself after opening a file
-        auto_resize = false,
-        mappings = {
-            -- custom only false will merge the list with the default mappings
-            -- if true, it will only use your list to set the mappings
-            custom_only = false,
-            -- list of mappings to set on the tree manually
-            list = {},
-        },
+    buftype = {
+        'terminal',
     },
 }
 
-local g = vim.g
+g.nvim_tree_special_files = {
+    ['README.md'] = 1,
+    Makefile = 1,
+    MAKEFILE = 1,
+}
+g.nvim_tree_show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    folder_arrows = 0,
+}
 
-g.nvim_tree_git_ignore = 1
-g.nvim_tree_quit_on_open = 0
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_git_hl = 1
-g.nvim_tree_highlight_opened_files = 0
-g.nvim_tree_root_folder_modifier = ':t'
-
-g.nvim_tree_show_icons = { git = 1, folders = 1, files = 1 }
 g.nvim_tree_icons = {
     default = ' ',
     symlink = ' ',
@@ -83,8 +36,81 @@ g.nvim_tree_icons = {
         unmerged = '',
         renamed = '➜',
         untracked = '★',
+        deleted = '',
+        ignored = '◌',
     },
-    folder = { default = '', open = '', symlink = '' },
+    folder = {
+        arrow_open = '',
+        arrow_closed = '',
+        default = '',
+        open = '',
+        empty = '',
+        empty_open = '',
+        symlink = '',
+        symlink_open = '',
+    },
+}
+
+-- following options are the default
+-- each of these are documented in `:help nvim-tree.OPTION_NAME`
+require('nvim-tree').setup {
+    disable_netrw = true,
+    hijack_netrw = true,
+    open_on_setup = false,
+    ignore_ft_on_setup = {},
+    auto_close = false,
+    open_on_tab = false,
+    hijack_cursor = true,
+    update_cwd = false,
+    update_to_buf_dir = {
+        enable = true,
+        auto_open = true,
+    },
+    diagnostics = {
+        enable = false,
+        icons = {
+            hint = '',
+            info = '',
+            warning = '',
+            error = '',
+        },
+    },
+    update_focused_file = {
+        enable = true,
+        update_cwd = false,
+        ignore_list = {},
+    },
+    system_open = {
+        cmd = nil,
+        args = {},
+    },
+    filters = {
+        dotfiles = false,
+        custom = {},
+    },
+    git = {
+        enable = true,
+        ignore = true,
+        timeout = 500,
+    },
+    view = {
+        width = 30,
+        height = 30,
+        hide_root_folder = false,
+        side = 'left',
+        auto_resize = false,
+        mappings = {
+            custom_only = false,
+            list = {},
+        },
+        number = false,
+        relativenumber = false,
+        signcolumn = 'yes',
+    },
+    trash = {
+        cmd = 'trash',
+        require_confirm = true,
+    },
 }
 
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
