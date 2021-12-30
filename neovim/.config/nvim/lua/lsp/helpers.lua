@@ -4,7 +4,6 @@ local null_ls = require 'null-ls'
 local lspconfig = require 'lspconfig'
 
 local map = require('utils').map
-local dump = require('utils').dump
 
 -- Server helpers
 M.get_system_name = function()
@@ -54,18 +53,8 @@ end
 
 -- Diagnostic helpers
 local function builtins(name, features, context)
-    local source
-    --print(name, require('utils').dump(features), context)
-    if features.alternative and features.alternative.enable then
-        return require('null-ls.helpers').conditional(function(utils)
-            source = features.alternative.rules(utils) and null_ls.builtins[context][name].with(features.settings)
-                or null_ls.builtins[context][features.alternative.name].with(features.alternative.settings)
-            return source
-        end)
-    else
-        source = null_ls.builtins[context][name]
-        return source.with(features.settings)
-    end
+    local source = null_ls.builtins[context][name]
+    return source.with(features.settings)
 end
 
 local enums = {

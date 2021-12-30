@@ -1,6 +1,10 @@
 -- linter: eslint_d
 local eslint_d = {
-    settings = {},
+    settings = {
+        condition = function(utils)
+            return utils.root_has_file { '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml' }
+        end,
+    },
 }
 
 -- linter: luacheck

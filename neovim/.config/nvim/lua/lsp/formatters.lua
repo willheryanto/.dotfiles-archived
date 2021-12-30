@@ -1,21 +1,23 @@
+local null_ls = require 'null-ls'
+
 -- formatter: stylua
 local stylua = { settings = {} }
 
--- formatter: prettierd
-local prettierd = {
-    settings = {},
-}
-
 -- formatter: eslint_d
 local eslint_d = {
-    settings = {},
-    alternative = {
-        enable = true,
-        name = 'prettierd',
-        rules = function(utils)
+    settings = {
+        condition = function(utils)
             return utils.root_has_file { '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml' }
         end,
-        settings = prettierd,
+    },
+}
+
+-- formatter: prettierd
+local prettierd = {
+    settings = {
+        condition = function(utils)
+            return not utils.root_has_file { '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml' }
+        end,
     },
 }
 
@@ -54,6 +56,7 @@ local latexindent = { settings = {} }
 return {
     ['stylua'] = stylua,
     ['eslint_d'] = eslint_d,
+    ['prettierd'] = prettierd,
     ['black'] = black,
     ['shfmt'] = shfmt,
     ['clang_format'] = clang_format,
