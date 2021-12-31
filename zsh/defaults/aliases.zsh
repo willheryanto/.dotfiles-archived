@@ -2,6 +2,7 @@
 alias vim="nvim"
 alias v="nvim"
 alias vi="nvim"
+alias mnvim="nvim -u ~/.config/nvim/minimal_init.lua"
 
 # cd aliases
 alias zshrc="cd $DOTFILES; vim .zshrc"
@@ -31,8 +32,7 @@ alias o="open"
 alias t="touch"
 alias ls="exa"
 #alias db="defaultbrowser"
-alias copy="tr -d '\n' | pbcopy"
-alias pwdc="pwd | tr -d '\n' | pbcopy"
+#alias copy="tr -d '\n' | pbcopy"
 
 cdc() {
   cd "$(pbpaste)"
@@ -45,7 +45,7 @@ mcd() {
 
 # Check zsh startup time
 benchmark() {
-  for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
+  for i in $(seq 1 10); do time zsh -i -c exit; done
 }
 
 # FZF functions

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+isWSL() {
+	if rg -i wsl /proc/version >/dev/null; then
+		return 0
+	else
+		return 1
+	fi
+}
