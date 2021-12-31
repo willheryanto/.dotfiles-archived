@@ -21,6 +21,7 @@ packer.startup(function(use)
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
     use 'rafamadriz/friendly-snippets'
+    use 'Devzstudio/Vscode-Emoji-Snippets'
 
     ---- Syntax highlighting
     use 'nvim-treesitter/nvim-treesitter'
