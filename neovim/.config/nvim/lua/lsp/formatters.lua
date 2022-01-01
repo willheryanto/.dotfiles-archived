@@ -72,6 +72,16 @@ local prettier = {
 -- formatter: latexindent
 local latexindent = { settings = {} }
 
+-- formatter: sqlformat
+---- Use other formatter for SQL files
+local sqlformatter = {
+    settings = {
+        command = 'sql-formatter',
+        args = { '$FILENAME' },
+        filetypes = { 'sql' },
+    },
+}
+
 return {
     ['stylua'] = stylua,
     ['eslint_d'] = eslint_d,
@@ -84,4 +94,5 @@ return {
     ['dart_format'] = dart_format,
     ['prettier'] = prettier,
     ['latexindent'] = latexindent,
+    ['sqlformat'] = sqlformatter,
 }
