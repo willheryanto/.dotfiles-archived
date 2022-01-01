@@ -15,6 +15,7 @@ local prettierd_supported_files = {
     json = true,
     markdown = true,
     css = true,
+    yaml = true,
 }
 local prettierd_memo = {}
 local prettierd = {
@@ -29,11 +30,11 @@ local prettierd = {
                 prettierd_memo[params.ft] = prettierd_supported_files[params.ft]
             else
                 -- Only support if eslint is not configured
-                prettierd_memo[params.ft] = not require('lspconfig').util.root_pattern {
+                prettierd_memo[params.ft] = not require('lspconfig').util.root_pattern(
                     '.eslintrc.js',
                     '.eslintrc.json',
-                    '.eslintrc.yaml',
-                }
+                    '.eslintrc.yaml'
+                )(params.bufname)
             end
 
             return prettierd_memo[params.ft]
