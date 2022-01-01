@@ -111,6 +111,11 @@ local cssls = {
     capabilities = capabilities,
 }
 
+-- server: dockerls
+local dockerls = {
+    on_attach = helpers.on_attach_navigation,
+}
+
 return {
     ['tsserver'] = tsserver, -- JS/TS
     ['sumneko_lua'] = sumneKo_lua, -- Lua
@@ -122,5 +127,6 @@ return {
     ['yamlls'] = yamlls, -- YAML
     ['solidity_ls'] = solidity_ls, -- Solidity
     ['cssls'] = cssls, -- Bash
+    ['dockerls'] = dockerls,
     --['pyright'] = pyright, -- Python
 }

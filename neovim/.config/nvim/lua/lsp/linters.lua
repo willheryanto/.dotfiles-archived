@@ -25,6 +25,9 @@ local yamllint = { settings = {} }
 -- linter: golangci_lint
 local golangci_lint = { settings = {} }
 
+-- linter: hadolint
+local hadolint = { settings = {} }
+
 return {
     ['eslint_d'] = eslint_d,
     ['luacheck'] = luacheck,
@@ -33,4 +36,5 @@ return {
     ['cppcheck'] = cppcheck,
     ['yamllint'] = yamllint,
     ['golangci_lint'] = golangci_lint,
+    ['hadolint'] = hadolint,
 }
