@@ -82,6 +82,13 @@ local sqlformatter = {
     },
 }
 
+-- formatter: terraform_fmt
+local terraform_fmt = {
+    settings = {
+        filetypes = { 'terraform' },
+    },
+}
+
 return {
     ['stylua'] = stylua,
     ['eslint_d'] = eslint_d,
@@ -95,4 +102,5 @@ return {
     ['prettier'] = prettier,
     ['latexindent'] = latexindent,
     ['sqlformat'] = sqlformatter,
+    ['terraform_fmt'] = terraform_fmt,
 }

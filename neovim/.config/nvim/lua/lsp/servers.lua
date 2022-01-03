@@ -116,6 +116,11 @@ local dockerls = {
     on_attach = helpers.on_attach_navigation,
 }
 
+-- server: terraform_lsp
+local terraform_lsp = {
+    on_attach = helpers.on_attach_navigation,
+}
+
 return {
     ['tsserver'] = tsserver, -- JS/TS
     ['sumneko_lua'] = sumneKo_lua, -- Lua
@@ -128,5 +133,6 @@ return {
     ['solidity_ls'] = solidity_ls, -- Solidity
     ['cssls'] = cssls, -- Bash
     ['dockerls'] = dockerls,
+    ['terraform_lsp'] = terraform_lsp,
     --['pyright'] = pyright, -- Python
 }
