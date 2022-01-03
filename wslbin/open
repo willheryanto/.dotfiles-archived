@@ -1,0 +1,15 @@
+#!/bin/bash
+
+myopen() {
+	for arg in "$@"; do
+		explorer.exe "$(wslpath -w "$arg")"
+	done
+}
+
+source $DOTFILES/bin/libs/iswsl
+
+if ! isWSL >/dev/null; then
+	open $@
+else
+	myopen $@
+fi

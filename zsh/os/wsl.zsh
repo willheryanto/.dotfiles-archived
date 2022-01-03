@@ -1,3 +1,4 @@
+export PATH=$PATH:$DOTFILES/wslbin/
 export WINHOME=/mnt/c/users/$USERNAME
 export WINDOWNLOAD=$WINHOME/downloads
 export AWS_VAULT_BACKEND="pass"
