@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eo pipefail
+
+DEFAULT_PATH=.env
+
+declare path
+declare commands
+
+while [[ $# -gt 0 ]]; do
+	case $1 in
+	-f | --file)
+		path=$2
+		shift
+		;;
+	*)
+		commands+="$1 "
+		;;
+	esac
+	shift
+done
+
+if [[ -z $path ]]; then
+	path=$DEFAULT_PATH
+fi
+
+export $(cat "$path" | xargs) && eval "$commands"
