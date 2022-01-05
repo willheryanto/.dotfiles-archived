@@ -76,8 +76,12 @@ local latexindent = { settings = {} }
 ---- Use other formatter for SQL files
 local sqlformatter = {
     settings = {
-        command = 'sql-formatter',
-        args = { '$FILENAME' },
+        command = 'sqlformat',
+        args = {
+            '-k',
+            'upper',
+            '$FILENAME',
+        },
         filetypes = { 'sql' },
     },
 }
