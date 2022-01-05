@@ -13,7 +13,11 @@ function! IsWSL()
   return 0
 endfunction
 
+function! MyBrowse(url)
+  execute '!explorer.exe' shellescape(a:url, 1)
+endfunction
+
 if (IsWSL())
-    command! -nargs=1 Browse silent exec '!explorer.exe "<args>"'
+    command! -nargs=1 Browse silent call MyBrowse(<q-args>)
 endif
 ]]
