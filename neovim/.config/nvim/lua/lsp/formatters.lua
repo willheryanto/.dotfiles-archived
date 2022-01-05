@@ -72,14 +72,13 @@ local prettier = {
 -- formatter: latexindent
 local latexindent = { settings = {} }
 
--- formatter: sqlformat
+-- formatter: sql-formatter
 ---- Use other formatter for SQL files
-local sqlformatter = {
+local sql_formatter = {
     settings = {
-        command = 'sqlformat',
+        command = 'sql-formatter',
         args = {
-            '-k',
-            'upper',
+            '-u',
             '$FILENAME',
         },
         filetypes = { 'sql' },
@@ -105,6 +104,6 @@ return {
     ['dart_format'] = dart_format,
     ['prettier'] = prettier,
     ['latexindent'] = latexindent,
-    ['sqlformat'] = sqlformatter,
+    ['sqlformat'] = sql_formatter,
     ['terraform_fmt'] = terraform_fmt,
 }
