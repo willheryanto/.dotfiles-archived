@@ -2,7 +2,11 @@
 
 myopen() {
 	for arg in "$@"; do
-		explorer.exe "$(wslpath -w "$arg")"
+		if [[ "$arg" == *"http"* ]]; then
+			explorer.exe "$arg"
+		else
+			explorer.exe "$(wslpath -w "$arg")"
+		fi
 	done
 }
 
