@@ -42,8 +42,22 @@ local prettierd = {
     },
 }
 
+-- formatter: isort
+local isort = {
+    settings = {
+        args = {
+            '--stdout',
+            '--profile',
+            'black',
+            '-',
+        },
+    },
+}
+
 -- formatter: black
-local black = { settings = {} }
+local black = {
+    settings = {},
+}
 
 -- formatter: shfmt
 local shfmt = { settings = {} }
@@ -96,6 +110,7 @@ return {
     ['stylua'] = stylua,
     ['eslint_d'] = eslint_d,
     ['prettierd'] = prettierd,
+    ['isort'] = isort,
     ['black'] = black,
     ['shfmt'] = shfmt,
     ['clang_format'] = clang_format,
