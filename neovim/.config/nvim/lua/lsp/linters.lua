@@ -13,6 +13,9 @@ local luacheck = { settings = {} }
 -- linter: flake8
 local flake8 = { settings = {} }
 
+-- linter: pyre
+local mypy = { settings = {} }
+
 -- linter: shellcheck
 local shellcheck = { settings = {} }
 
@@ -32,6 +35,7 @@ return {
     ['eslint_d'] = eslint_d,
     ['luacheck'] = luacheck,
     ['flake8'] = flake8,
+    ['mypy'] = mypy,
     ['shellcheck'] = shellcheck,
     ['cppcheck'] = cppcheck,
     ['yamllint'] = yamllint,
