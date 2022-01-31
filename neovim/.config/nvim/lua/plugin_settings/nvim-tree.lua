@@ -55,9 +55,9 @@ g.nvim_tree_icons = {
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require('nvim-tree').setup {
     disable_netrw = true,
-    hijack_netrw = true,
+    hijack_netrw = false,
     open_on_setup = false,
-    ignore_ft_on_setup = {},
+    ignore_ft_on_setup = { ".git" },
     auto_close = false,
     open_on_tab = false,
     hijack_cursor = true,
@@ -113,4 +113,4 @@ require('nvim-tree').setup {
     },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFileToggle<CR>', { noremap = true, silent = true })

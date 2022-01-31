@@ -24,7 +24,7 @@ packer.startup(function(use)
     use 'Devzstudio/Vscode-Emoji-Snippets'
 
     ---- Syntax highlighting
-    use 'nvim-treesitter/nvim-treesitter'
+    use { 'nvim-treesitter/nvim-treesitter', commit = 'a3c86fe843b1056b3d02596711882719517a8f9f' }
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-tree-docs'
 
@@ -61,6 +61,13 @@ packer.startup(function(use)
     use 'simrat39/rust-tools.nvim'
     use 'fatih/vim-go'
     use 'akinsho/flutter-tools.nvim'
+
+    ---- Debugger
+    use 'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-dap-python'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use { 'michaelb/sniprun', run = 'bash ./install.sh' }
 
     -- Helpers
     use 'christoomey/vim-tmux-navigator'
