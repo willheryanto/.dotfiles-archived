@@ -24,7 +24,7 @@ packer.startup(function(use)
     use 'Devzstudio/Vscode-Emoji-Snippets'
 
     ---- Syntax highlighting
-    use { 'nvim-treesitter/nvim-treesitter', commit = 'a3c86fe843b1056b3d02596711882719517a8f9f' }
+    use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-tree-docs'
 
@@ -37,9 +37,6 @@ packer.startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('nvim-tree').setup {}
-        end,
     }
     use {
         'nvim-telescope/telescope.nvim',
