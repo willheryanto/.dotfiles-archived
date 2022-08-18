@@ -1,9 +1,9 @@
-vim.g.vimtex_compiler_latexmk_engines = {
-    ['xelatex'] = '-xelatex',
-    ['lualatex'] = '-lualatex',
-    ['pdflatex'] = '-pdflatex',
-    ['pdf'] = '-pdflatex',
-}
+--vim.g.vimtex_compiler_latexmk_engines = {
+    --['xelatex'] = '-xelatex',
+    --['lualatex'] = '-lualatex',
+    --['pdflatex'] = '-pdflatex',
+    --['pdf'] = '-pdflatex',
+--}
 
 vim.g.vimtex_compiler_latexmk = {
     build_dir = 'build',

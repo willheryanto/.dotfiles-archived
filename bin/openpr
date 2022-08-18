@@ -86,6 +86,6 @@ else
 	pr_url="https://$repository_url/compare/$target_branch...$current_branch"
 fi
 
-open $pr_url
+open "$pr_url"
 
 exit 0

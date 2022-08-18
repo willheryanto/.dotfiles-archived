@@ -1,6 +1,6 @@
 local opt = require('utils').opt
 
-local indent = 4
+local indent = 2
 
 opt('o', 'hidden', true)
 opt('o', 'ignorecase', true)

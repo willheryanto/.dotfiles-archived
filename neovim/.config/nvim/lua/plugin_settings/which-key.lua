@@ -8,7 +8,7 @@ wk.register({
         o = { '<cmd>tabonly<cr>', ':tabonly' },
         n = { '<cmd>tabnext<cr>', ':tabnext' },
         p = { '<cmd>tabprevious<cr>', ':tabprevious' },
-        k = { '<cmd>TagbarToggle<cr>', ':TagbarToggle' },
+        b = { '<cmd>TagbarToggle<cr>', ':TagbarToggle' },
         l = { '<cmd>TroubleToggle<cr>', ':Trouble' },
     },
     q = {
@@ -26,7 +26,7 @@ wk.register({
         l = { '<cmd>Gclog %<cr>', 'log' },
         p = { '<cmd>Git push<cr>', 'push' },
         P = { '<cmd>Git pull<cr>', 'pull' },
-        r = { '<cmd>GRemove<cr>', 'remove' },
+        R = { '<cmd>GRemove<cr>', 'remove' },
         v = { '<cmd>GV<cr>', 'view commits' },
         V = { '<cmd>GV!<cr>', 'view buffer commits' },
         w = { '<cmd>Gwrite<cr>', 'git write current file' },

@@ -56,7 +56,12 @@ local isort = {
 
 -- formatter: black
 local black = {
-    settings = {},
+    settings = {
+        --args = {
+            --'-l',
+            --'100',
+        --},
+    },
 }
 
 -- formatter: shfmt

@@ -15,5 +15,5 @@ source $DOTFILES/bin/libs/iswsl
 if ! isWSL >/dev/null; then
 	open $@
 else
-	myopen $@
+	myopen "$@"
 fi

@@ -11,5 +11,9 @@ filepath = sys.argv[1]
 
 with open(filepath, "r") as f:
     file = "".join(f.readlines())
-    print(sqlparse.format(file, reindent=True, keyword_case="upper"))
+    print(
+        sqlparse.format(
+            file, keyword_case="upper", reindent_aligned=True, reindent=True
+        )
+    )
     exit(0)
