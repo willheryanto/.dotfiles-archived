@@ -30,11 +30,10 @@ local prettierd = {
                 prettierd_memo[params.ft] = prettierd_supported_files[params.ft]
             else
                 -- Only support if eslint is not configured
-                prettierd_memo[params.ft] = not require('lspconfig').util.root_pattern(
-                    '.eslintrc.js',
-                    '.eslintrc.json',
-                    '.eslintrc.yaml'
-                )(params.bufname)
+                prettierd_memo[params.ft] =
+                    not require('lspconfig').util.root_pattern('.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml')(
+                        params.bufname
+                    )
             end
 
             return prettierd_memo[params.ft]
@@ -58,8 +57,8 @@ local isort = {
 local black = {
     settings = {
         --args = {
-            --'-l',
-            --'100',
+        --'-l',
+        --'100',
         --},
     },
 }
@@ -95,9 +94,9 @@ local latexindent = { settings = {} }
 ---- Use other formatter for SQL files
 local sql_formatter = {
     settings = {
-        command = 'sql-formatter',
+        command = 'sqlformat',
         args = {
-            '-u',
+            '-a',
             '$FILENAME',
         },
         filetypes = { 'sql' },

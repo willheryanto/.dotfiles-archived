@@ -1,0 +1,5 @@
+require('dap-python').setup '~/.pyenv/versions/3.9.7/bin/python'
+require 'debugger.adapters'
+require 'debugger.configs'
+require 'debugger.mapping'
+require 'debugger.ui'

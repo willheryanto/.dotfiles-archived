@@ -201,6 +201,11 @@ local terraform_lsp = {
     on_attach = helpers.on_attach_navigation,
 }
 
+-- server: tflint
+local tflint = {
+    on_attach = helpers.on_attach_navigation,
+}
+
 return {
     ['tsserver'] = tsserver, -- JS/TS
     ['sumneko_lua'] = sumneKo_lua, -- Lua
@@ -214,5 +219,6 @@ return {
     ['cssls'] = cssls, -- Bash
     ['dockerls'] = dockerls,
     ['terraform_lsp'] = terraform_lsp,
+    ['tflint'] = tflint,
     --['pyright'] = pyright, -- Python
 }
