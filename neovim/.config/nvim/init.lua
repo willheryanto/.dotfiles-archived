@@ -8,4 +8,4 @@ require 'lsp'
 require 'plugin_settings'
 require 'debugger'
 
-vim.cmd 'colorscheme kanagawa'
+vim.cmd 'colorscheme tokyonight-storm'

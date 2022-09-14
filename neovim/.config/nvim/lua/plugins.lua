@@ -5,9 +5,13 @@ packer.startup(function(use)
 
     -- Dev environment
     ---- LSP / Diagnostics
-    use 'neovim/nvim-lspconfig'
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        'jose-elias-alvarez/null-ls.nvim',
+        'jose-elias-alvarez/nvim-lsp-ts-utils',
+    }
 
     ---- Autocompletion
     use 'hrsh7th/nvim-cmp'
@@ -71,7 +75,7 @@ packer.startup(function(use)
     use 'christoomey/vim-tmux-navigator'
     use 'windwp/nvim-autopairs'
     use 'alvan/vim-closetag'
-    use 'akinsho/nvim-bufferline.lua'
+    use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
     use 'folke/which-key.nvim'
     use 'wellle/targets.vim'
     use 'norcalli/nvim-colorizer.lua'
@@ -87,6 +91,7 @@ packer.startup(function(use)
     ---- Themes
     use 'bluz71/vim-moonfly-colors'
     use 'rebelot/kanagawa.nvim'
+    use 'folke/tokyonight.nvim'
 
     -- Others
     ---- Writing
