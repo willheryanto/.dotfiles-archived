@@ -13,6 +13,9 @@ ts_config.setup {
         'cpp',
         'rust',
     },
+    autotag = {
+        enable = true,
+    },
     highlight = { enable = true, use_languagetree = true },
     tree_docs = { enable = true },
 }

@@ -13,6 +13,8 @@ packer.startup(function(use)
         'jose-elias-alvarez/nvim-lsp-ts-utils',
     }
 
+    use { 'glepnir/lspsaga.nvim', branch = 'main' }
+
     ---- Autocompletion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -52,9 +54,10 @@ packer.startup(function(use)
     ---- Git helpers
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb' -- Enable GBrowse
+    use 'lewis6991/gitsigns.nvim'
 
     ---- Utils
-    use 'preservim/nerdcommenter' -- Comment keybindings
+    --use 'preservim/nerdcommenter' -- Comment keybindings
     use 'lukas-reineke/indent-blankline.nvim'
     use 'tpope/vim-surround' -- "Surround" keybindings
 
@@ -74,6 +77,7 @@ packer.startup(function(use)
     -- Helpers
     use 'christoomey/vim-tmux-navigator'
     use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
     use 'alvan/vim-closetag'
     use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
     use 'folke/which-key.nvim'

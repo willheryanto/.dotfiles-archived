@@ -65,31 +65,13 @@ local tsserver = {
         local opts = { noremap = true, silent = true }
 
         map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        map('n', 'Z', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
         map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-        map('n', '<C-z>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-        map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-        map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-        map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        --map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        map('n', '<space>ca', '<cmd>CodeActionMenu<CR>', opts)
-        map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-        map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-        map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-        map('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     end,
 }
 
 -- server: sumneko_lua
-local sumneko_root_path = os.getenv 'HOME' .. '/dev/repos/ext/language-servers/lua-language-server'
-local sumneko_binary_path = sumneko_root_path .. '/bin/' .. helpers.get_system_name() .. '/lua-language-server'
 local sumneKo_lua = {
     on_attach = helpers.on_attach_navigation,
-    --cmd = { sumneko_binary_path, '-E', sumneko_root_path .. '/main.lua' },
     cmd = { 'lua-language-server' },
     settings = {
         Lua = {
@@ -120,8 +102,8 @@ local jedi_language_server = {
     init_options = {
         workspace = {
             extraPaths = {
-                vim.fn.getcwd() .. '/__pypackages__/3.9/lib',
-                vim.fn.getcwd() .. '/__pypackages__/3.9/bin',
+                vim.fn.getcwd() .. '/__pypackages__/3.10.2/lib',
+                vim.fn.getcwd() .. '/__pypackages__/3.10.2/bin',
             },
         },
     },
