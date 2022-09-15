@@ -9,8 +9,7 @@ packer.startup(function(use)
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
-        'jose-elias-alvarez/null-ls.nvim',
-        'jose-elias-alvarez/nvim-lsp-ts-utils',
+        'jose-elias-alvarez/null-ls.nvim'
     }
 
     use { 'glepnir/lspsaga.nvim', branch = 'main' }
@@ -69,6 +68,7 @@ packer.startup(function(use)
     use 'tpope/vim-surround' -- "Surround" keybindings
 
     ---- Specific language helpers
+    use 'jose-elias-alvarez/typescript.nvim'
     use 'rust-lang/rust.vim'
     use 'simrat39/rust-tools.nvim'
     use 'fatih/vim-go'
