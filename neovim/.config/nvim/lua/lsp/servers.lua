@@ -1,6 +1,29 @@
 local helpers = require 'lsp.helpers'
 local map = require('utils').map
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+        'documentation',
+        'detail',
+        'additionalTextEdits',
+    },
+}
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local lspconfig = require "lspconfig"
+
+lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config, {
+    capabilities = capabilities,
+})
+
 -- server: tsserver
 local tsserver = {
     init_options = require('nvim-lsp-ts-utils').init_options,
@@ -165,12 +188,8 @@ local pyright = {
 }
 
 -- server: cssls
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local cssls = {
     on_attach = helpers.on_attach_navigation,
-    capabilities = capabilities,
 }
 
 -- server: dockerls

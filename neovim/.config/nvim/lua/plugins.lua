@@ -21,12 +21,13 @@ packer.startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
+    use 'saadparwaiz1/cmp_luasnip'
+
     use 'mattn/emmet-vim'
     use 'github/copilot.vim'
 
     ---- Snippets
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
+    use { 'L3MON4D3/LuaSnip', tag = 'v1.*' }
     use 'rafamadriz/friendly-snippets'
     --use 'Devzstudio/Vscode-Emoji-Snippets'
 
@@ -58,6 +59,12 @@ packer.startup(function(use)
 
     ---- Utils
     --use 'preservim/nerdcommenter' -- Comment keybindings
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end,
+    }
     use 'lukas-reineke/indent-blankline.nvim'
     use 'tpope/vim-surround' -- "Surround" keybindings
 
@@ -79,7 +86,6 @@ packer.startup(function(use)
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
     use 'alvan/vim-closetag'
-    use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
     use 'folke/which-key.nvim'
     use 'wellle/targets.vim'
     use 'norcalli/nvim-colorizer.lua'
@@ -88,6 +94,9 @@ packer.startup(function(use)
     -- UI
     ---- Statusline
     use 'nvim-lualine/lualine.nvim'
+
+    ---- Tabs
+    use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
 
     ---- Icons
     use 'ryanoasis/vim-devicons'
