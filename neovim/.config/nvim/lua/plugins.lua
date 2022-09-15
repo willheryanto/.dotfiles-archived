@@ -85,7 +85,7 @@ packer.startup(function(use)
     use 'christoomey/vim-tmux-navigator'
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
-    use 'alvan/vim-closetag'
+    -- use 'alvan/vim-closetag'
     use 'folke/which-key.nvim'
     use 'wellle/targets.vim'
     use 'norcalli/nvim-colorizer.lua'

@@ -10,7 +10,7 @@ map('n', '<leader>/', ':noh<CR> ', opt)
 map('n', '<leader>ww', ':w<CR> ', opt)
 
 -- Tabs
-map('n', '<leader>tt', ':tabedit<CR> ', opt)
+map('n', '<leader>tt', ':tabnew<CR> ', opt)
 map('n', '<leader>tc', ':tabclose<CR>', opt)
 map('n', '<leader>to', ':tabonly<CR> ', opt)
 map('n', '<leader>tn', ':tabnext<CR> ', opt)
