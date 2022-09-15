@@ -7,5 +7,4 @@ require 'statusline'
 require 'lsp'
 require 'plugin_settings'
 require 'debugger'
-
-vim.cmd 'colorscheme tokyonight-storm'
+require 'theme'
