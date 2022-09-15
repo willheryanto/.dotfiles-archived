@@ -3,7 +3,7 @@ require('mason').setup {}
 require('mason-lspconfig').setup {
     ensure_installed = {
         'tsserver',
-        --'sumneko_lua',
+        'sumneko_lua',
         'jedi_language_server',
         'ccls',
         'texlab',
@@ -29,5 +29,5 @@ require('mason-lspconfig').setup {
 
     auto_update = false,
 
-    automatic_installation = false,
+    automatic_installation = true,
 }
