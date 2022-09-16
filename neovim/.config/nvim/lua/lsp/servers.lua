@@ -1,44 +1,20 @@
 local helpers = require 'lsp.helpers'
-local map = require('utils').map
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-        'documentation',
-        'detail',
-        'additionalTextEdits',
-    },
-}
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lspconfig = require "lspconfig"
+local lspconfig = require 'lspconfig'
 
 lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config, {
     capabilities = capabilities,
 })
 
 -- server: tsserver
-require('typescript').setup({})
---[[ local tsserver = {
-    init_options = require('nvim-lsp-ts-utils').init_options,
-    on_attach = function(client, bufnr)
-        -- no default maps, so you may want to define some here
-        client.resolved_capabilities.document_formatting = false
-
-        -- Mappings.
-        local opts = { noremap = true, silent = true }
-
-        map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    end,
-} ]]
+require('typescript').setup {
+    server = {
+        on_attach = helpers.on_attach_navigation,
+        capabilities = capabilities,
+    },
+}
 
 -- server: sumneko_lua
 local sumneko_lua = {
@@ -137,6 +113,12 @@ local terraform_lsp = {
 local tflint = {
     on_attach = helpers.on_attach_navigation,
 }
+
+-- server: denols
+--[[ vim.g.markdown_fenced_languages = {
+    'ts=typescript',
+}
+require('lspconfig').denols.setup {} ]]
 
 return {
     -- ['tsserver'] = tsserver, -- JS/TS

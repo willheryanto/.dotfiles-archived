@@ -1,6 +1,12 @@
 -- formatter: stylua
 local stylua = { settings = {} }
 
+-- server: eslint
+local eslint = { settings = {} }
+
+-- server: prettier
+local prettier = { settings = {} }
+
 -- formatter: eslint_d
 local eslint_d = {
     settings = {
@@ -16,6 +22,7 @@ local prettierd_supported_files = {
     markdown = true,
     css = true,
     yaml = true,
+    typescriptreact = true,
 }
 local prettierd_memo = {}
 local prettierd = {
@@ -79,13 +86,13 @@ local rustfmt = { settings = {} }
 local dart_format = { settings = {} }
 
 -- formatter: prettier
-local prettier = {
+--[[ local prettier = {
     settings = {
         filetypes = {
             'solidity',
         },
     },
-}
+} ]]
 
 -- formatter: latexindent
 local latexindent = { settings = {} }
@@ -112,8 +119,10 @@ local terraform_fmt = {
 
 return {
     ['stylua'] = stylua,
-    ['eslint_d'] = eslint_d,
-    ['prettierd'] = prettierd,
+    -- ['eslint_d'] = eslint_d,
+    -- ['prettierd'] = prettierd,
+    ['eslint'] = eslint,
+    ['prettier'] = prettier,
     ['isort'] = isort,
     ['black'] = black,
     ['shfmt'] = shfmt,
@@ -121,7 +130,6 @@ return {
     ['gofmt'] = gofmt,
     ['rustfmt'] = rustfmt,
     ['dart_format'] = dart_format,
-    ['prettier'] = prettier,
     ['latexindent'] = latexindent,
     ['sqlformat'] = sql_formatter,
     ['terraform_fmt'] = terraform_fmt,

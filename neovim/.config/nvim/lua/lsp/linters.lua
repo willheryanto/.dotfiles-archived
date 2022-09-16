@@ -7,6 +7,9 @@ local eslint_d = {
     },
 }
 
+-- server: eslint
+local eslint = { settings = {} }
+
 -- linter: luacheck
 local luacheck = { settings = {} }
 
@@ -32,7 +35,8 @@ local golangci_lint = { settings = {} }
 local hadolint = { settings = {} }
 
 return {
-    ['eslint_d'] = eslint_d,
+    -- ['eslint_d'] = eslint_d,
+    ['eslint'] = eslint,
     ['luacheck'] = luacheck,
     ['flake8'] = flake8,
     ['mypy'] = mypy,
