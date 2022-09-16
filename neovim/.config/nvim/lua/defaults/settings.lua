@@ -25,7 +25,7 @@ opt('b', 'swapfile', false)
 opt('b', 'autoread', true)
 
 opt('w', 'number', true)
-opt('w', 'relativenumber', true)
+-- opt('w', 'relativenumber', true)
 opt('w', 'wrap', false)
 
 vim.cmd [[

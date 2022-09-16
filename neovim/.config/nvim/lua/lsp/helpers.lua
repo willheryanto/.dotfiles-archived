@@ -18,21 +18,22 @@ M.get_system_name = function()
     return system_name
 end
 
-M.on_attach_navigation = function(client)
+M.on_attach_navigation = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
 
     -- Mappings.
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 end
 
-M.on_attach_formatting = function(client)
+M.on_attach_formatting = function(client, bufnr)
     client.resolved_capabilities.document_formatting = true
 
-    local opts = { noremap = true, silent = true }
-    -- map('n', '<space>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    vim.keymap.set('n', '<space>fo', vim.lsp.buf.formatting, opts)
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<space>fo', vim.lsp.buf.formatting, bufopts)
 end
 
 -- Diagnostic helpers
