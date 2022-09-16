@@ -3,8 +3,6 @@ local M = {}
 local null_ls = require 'null-ls'
 local lspconfig = require 'lspconfig'
 
-local map = require('utils').map
-
 -- Server helpers
 M.get_system_name = function()
     local system_name
@@ -25,15 +23,16 @@ M.on_attach_navigation = function(client)
 
     -- Mappings.
     local opts = { noremap = true, silent = true }
-    map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 end
 
 M.on_attach_formatting = function(client)
     client.resolved_capabilities.document_formatting = true
 
     local opts = { noremap = true, silent = true }
-    map('n', '<space>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    -- map('n', '<space>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    vim.keymap.set('n', '<space>fo', vim.lsp.buf.formatting, opts)
 end
 
 -- Diagnostic helpers
