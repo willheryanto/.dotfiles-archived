@@ -19,7 +19,7 @@ M.get_system_name = function()
 end
 
 M.on_attach_navigation = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
 
     -- Mappings.
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -28,7 +28,7 @@ M.on_attach_navigation = function(client, bufnr)
 end
 
 M.on_attach_formatting = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = true
+    client.server_capabilities.documentFormattingProvider = true
 
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
