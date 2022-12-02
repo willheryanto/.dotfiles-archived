@@ -33,7 +33,7 @@ M.on_attach_formatting = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<space>fo', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>fo', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 -- Diagnostic helpers
