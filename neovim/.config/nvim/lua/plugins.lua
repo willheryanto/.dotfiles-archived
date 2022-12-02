@@ -96,7 +96,7 @@ packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
 
     ---- Tabs
-    use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
+    use { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'kyazdani42/nvim-web-devicons' }
 
     ---- Icons
     use 'ryanoasis/vim-devicons'
