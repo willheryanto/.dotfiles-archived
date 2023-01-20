@@ -38,10 +38,15 @@ cdc() {
   cd "$(pbpaste)"
 }
 
-# Make new directory and directly cd into it
-mcd() {
+
+mkd() {
   mkdir $1 && cd $1
 }
+
+# Make new directory and directly cd into it
+# mcd() {
+#   mkdir $1 && cd $1
+# }
 
 # Check zsh startup time
 benchmark() {

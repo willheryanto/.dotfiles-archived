@@ -17,8 +17,11 @@ files=(
     defaults/init.zsh
     dev/init.zsh
     os/init.zsh
+    work/init.zsh
 )
 
 for file in $files;
     do source $MYZSHCONFIG/$file;
 done
+
+. $HOME/.asdf/asdf.sh

@@ -3,13 +3,20 @@ local dap = require 'dap'
 dap.adapters.node2 = {
     type = 'executable',
     command = 'node',
-    args = { os.getenv 'HOME' .. '/dev/repos/external/vscode-node-debug2/out/src/nodeDebug.js' },
+    args = { vim.fn.stdpath 'data' .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' },
 }
 
---dap.adapters.chrome = {
---type = 'executable',
---command = 'node',
---args = {
---os.getenv 'HOME' .. '/' .. '.vscode-oss/extensions/msjsdiag.debugger-for-chrome-4.13.0/out/src/chromeDebug.js',
---},
---}
+dap.adapters.go = {
+    type = 'server',
+    port = '${port}',
+    executable = {
+        command = vim.fn.stdpath 'data' .. '/mason/bin/dlv',
+        args = { 'dap', '-l', '127.0.0.1:${port}' },
+    },
+}
+
+dap.adapters.chrome = {
+    type = 'executable',
+    command = 'node',
+    args = { vim.fn.stdpath 'data' .. '/mason/packages/chrome-debug-adapter/out/src/nodeDebug.js' },
+}

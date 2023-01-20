@@ -34,6 +34,13 @@ local golangci_lint = { settings = {} }
 -- linter: hadolint
 local hadolint = { settings = {} }
 
+-- linter: credo
+local credo = {
+    settings = {
+        filetypes = { 'elixir', 'heex' },
+    },
+}
+
 return {
     -- ['eslint_d'] = eslint_d,
     ['eslint'] = eslint,
@@ -45,4 +52,5 @@ return {
     ['yamllint'] = yamllint,
     ['golangci_lint'] = golangci_lint,
     ['hadolint'] = hadolint,
+    ['credo'] = credo,
 }

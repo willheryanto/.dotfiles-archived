@@ -56,6 +56,11 @@ packer.startup(function(use)
     use 'tpope/vim-rhubarb' -- Enable GBrowse
     use 'lewis6991/gitsigns.nvim'
 
+    ---- PlantUML
+    use 'tyru/open-browser.vim'
+    use 'aklt/plantuml-syntax'
+    use 'weirongxu/plantuml-previewer.vim'
+
     ---- Utils
     --use 'preservim/nerdcommenter' -- Comment keybindings
     use {
@@ -73,6 +78,8 @@ packer.startup(function(use)
     use 'simrat39/rust-tools.nvim'
     use 'fatih/vim-go'
     use 'akinsho/flutter-tools.nvim'
+    use 'mhanberg/elixir.nvim'
+    use 'evanleck/vim-svelte'
 
     ---- Debugger
     use 'mfussenegger/nvim-dap'
@@ -105,6 +112,9 @@ packer.startup(function(use)
     use 'bluz71/vim-moonfly-colors'
     use 'rebelot/kanagawa.nvim'
     use 'folke/tokyonight.nvim'
+
+    ---- Notification
+    use 'rcarriga/nvim-notify'
 
     -- Others
     ---- Writing

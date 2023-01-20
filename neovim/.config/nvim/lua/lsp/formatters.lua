@@ -5,7 +5,29 @@ local stylua = { settings = {} }
 local eslint = { settings = {} }
 
 -- server: prettier
-local prettier = { settings = {} }
+local prettier = {
+    settings = {
+        filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+            'css',
+            'scss',
+            'less',
+            'html',
+            'json',
+            'jsonc',
+            'yaml',
+            'markdown',
+            'markdown.mdx',
+            'graphql',
+            'handlebars',
+            'svelte',
+        },
+    },
+}
 
 -- formatter: eslint_d
 local eslint_d = {
@@ -101,11 +123,7 @@ local latexindent = { settings = {} }
 ---- Use other formatter for SQL files
 local sql_formatter = {
     settings = {
-        command = 'sqlformat',
-        args = {
-            '-a',
-            '$FILENAME',
-        },
+        command = 'sql-formatter',
         filetypes = { 'sql' },
     },
 }
@@ -114,6 +132,13 @@ local sql_formatter = {
 local terraform_fmt = {
     settings = {
         filetypes = { 'terraform' },
+    },
+}
+
+-- formatter: mix
+local mix = {
+    settings = {
+        filetypes = { 'elixir', 'heex' },
     },
 }
 
@@ -131,6 +156,7 @@ return {
     ['rustfmt'] = rustfmt,
     ['dart_format'] = dart_format,
     ['latexindent'] = latexindent,
-    ['sqlformat'] = sql_formatter,
+    ['sql_formatter'] = sql_formatter,
     ['terraform_fmt'] = terraform_fmt,
+    ['mix'] = mix,
 }

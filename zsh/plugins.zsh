@@ -21,13 +21,22 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)' pick'**/starship'
-zinit light starship/starship
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit load starship/starship
+    # atload'_zsh_autosuggest_start' zsh-users/zsh-autosuggestions \
+    # atinit"zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
+    #            zdharma-continuum/history-search-multi-word \
 
-zinit wait lucid light-mode for \
-    atload'_zsh_autosuggest_start' zsh-users/zsh-autosuggestions \
-    atinit"zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
-               zdharma-continuum/history-search-multi-word \
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
     light-mode rupa/z \
-    light-mode OMZP::tmux \
-    light-mode lukechilds/zsh-nvm
+    light-mode OMZP::tmux
+
+    # light-mode lukechilds/zsh-nvm
